@@ -1,7 +1,8 @@
 # frozen_string_literal: true
 
 # https://github.com/Homebrew/homebrew-bundle
-
+tap "aws/tap"
+tap "bramstein/fonttools"
 tap "homebrew/bundle"
 tap "homebrew/cask"
 tap "homebrew/cask-versions"
@@ -11,6 +12,7 @@ tap "homebrew/core"
 tap "homebrew/services"
 tap "puma/puma"
 tap "universal-ctags/universal-ctags"
+tap "mas-cli/tap"
 
 # Homebrew
 # https://github.com/Homebrew/brew/
@@ -28,9 +30,11 @@ brew "awscli"
 brew "bash"
 brew "bash-completion"
 brew "bat"
+brew "bramstein/fonttools/woff2"
 brew "cloc"
 brew "cmake"
 brew "coreutils"
+brew "curl"
 brew "diff-so-fancy"
 brew "dos2unix"
 brew "exa"
@@ -64,19 +68,21 @@ brew "neovim", args: ["HEAD"]
 brew "onefetch"
 brew "overmind"
 brew "pandoc"
-brew "perl"
-brew "pgcli"
-brew "postgresql", restart_service: true
-brew "puma/puma/puma-dev"
+#brew "perl"
+#brew "pgcli"
+#brew "postgresql", restart_service: true
+#brew "puma/puma/puma-dev"
 brew "python"
 brew "ranger"
 brew "readline"
 brew "ripgrep"
 brew "rlwrap"
 brew "rsync"
+brew "screen"
 brew "shellcheck"
 brew "sqlite"
 brew "ssh-copy-id"
+brew "speedtest-cli"
 brew "starship"
 brew "the_silver_searcher"
 brew "tldr"
@@ -84,78 +90,91 @@ brew "tmux"
 brew "trash"
 brew "tree"
 brew "universal-ctags/universal-ctags/universal-ctags", args: ["HEAD"]
-brew "unixodbc" # asdf dependency
-brew "w3m"
+#brew "unixodbc" # asdf dependency
+#brew "w3m"
 brew "wget"
 brew "xz"
+brew "yarn"
+brew "youtube-dl"
 brew "zsh"
 
 # homebrew-cask
 # https://github.com/caskroom/homebrew-cask
+
 cask "1password"
-cask "alfred"
+#cask "alfred"
+cask "aerial"
+cask "airfoil"
 cask "arq"
-cask "balenaetcher"
-cask "bartender"
-cask "brave-browser"
-cask "carbon-copy-cloner"
+cask "audio-hijack"
+#cask "beersmith2"
+#cask "balenaetcher"
+#cask "bartender"
+#cask "brave-browser"
+#cask "carbon-copy-cloner"
+cask "cheatsheet"
 cask "cleanmymac"
-cask "clover-configurator"
+#cask "clover-configurator"
+cask "cyberduck"
 cask "daisydisk"
-cask "dash"
-cask "discord"
+#cask "dash"
+cask "devonthink-pro-office"
 cask "dropbox"
-cask "expressvpn"
-cask "fantastical"
-cask "firefox"
-cask "font-caskaydiacove-nerd-font"
-cask "font-firacode-nerd-font"
+cask "duet"
+cask "elgato-stream-deck"
+cask "font-caskaydia-cove-nerd-font"
+cask "font-fira-code-nerd-font"
 cask "font-iosevka-nerd-font"
 cask "font-jetbrainsmono-nerd-font"
 cask "font-victormono-nerd-font"
+cask "franz"
 cask "google-chrome"
-cask "handbrake"
+cask "google-cloud-sdk"
+#cask "handbrake"
 cask "hazel"
 cask "istat-menus"
-cask "iterm2-beta"
+cask "iterm2"
+cask "keka"
 cask "little-snitch"
 cask "micro-snitch"
 cask "microsoft-edge"
 cask "microsoft-excel"
 cask "microsoft-word"
-cask "ngrok"
-cask "opera"
+cask "microsoft-outlook"
+cask "microsoft-powerpoint"
+cask "microsoft-teams"
+cask "moneymoney"
+cask "obs"
+cask "obs-virtualcam"
+cask "onedrive"
+cask "parallels-desktop"
 cask "pdftotext"
 cask "pgadmin4"
 cask "postico"
 cask "postman"
+#cask "send-to-kindle"
 cask "screenflick"
+cask "signal"
 cask "skype"
 cask "slack"
+cask "soundflower"
 cask "steam"
-cask "tableplus"
-cask "telegram"
-cask "toggl"
-cask "viber"
-cask "vlc"
-cask "vmware-fusion"
+cask "superduper"
+cask "virtualbox"
 cask "whatsapp"
+cask "workflowy"
+cask "wireshark"
 cask "zoomus"
 
 # rubocop:disable Style/NumericLiterals
 mas "Deliveries", id: 924726344
-mas "Evernote", id: 406056744
-mas "Keynote", id: 409183694
 mas "Magnet", id: 441258766
-mas "Marked 2", id: 890031187
-mas "Numbers", id: 409203825
+mas "Motif", id: 1404636482
 mas "OmniGraffle", id: 1142578753
 mas "Pages", id: 409201541
-mas "Pixelmator Pro", id: 1289583905
+mas "ReadKit", id: 588726889
 mas "Spark", id: 1176895641
 mas "Things 3", id: 904280696
 mas "ToothFairy", id: 1191449274
-mas "WiFi Explorer", id: 494803304
-mas "e-Sword", id: 968437868
-mas "iNet Network Scanner", id: 403304796
-# rubocop:enable Style/NumericLiterals
+mas "WHITEWALL", id: 1286836110
+#mas "Xcode", id: 497799835

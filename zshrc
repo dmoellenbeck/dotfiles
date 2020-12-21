@@ -1,7 +1,21 @@
 # ~/.zshrc
 . $HOME/dotfiles/zsh/profiler.start
 
-export PATH=$HOME/bin:/usr/local/bin:/usr/local/sbin:/usr/bin:/bin:/usr/sbin:/sbin
+
+export LC_ALL=en_US.UTF-8
+export LANG=en_US.UTF-8
+
+
+# Load all of the config files in ~/oh-my-zsh that end in .zsh
+for config_file ($ZSH/lib/*.zsh) source $config_file
+
+
+# Extend Autocomplete Search Path
+fpath=($HOME/.zsh/lib/completions $fpath)
+
+
+export PATH=$HOME/bin:/usr/local/bin:/usr/local/sbin:/usr/bin:/bin:/usr/sbin:/sbin:$PATH
+
 export EDITOR="nvim"
 export BUNDLER_EDITOR=$EDITOR
 export MANPAGER="less -X" # Don’t clear the screen after quitting a manual page
@@ -25,6 +39,7 @@ export HOST_NAME
 . $DOTFILES/zsh/tmux
 . $DOTFILES/zsh/functions
 . $DOTFILES/zsh/z.sh
+. $DOTFILES/zsh/history.zsh
 . $DOTFILES/zsh/ranger.sh
 
 cdpath=($HOME/code $DOTFILES $HOME/Developer $HOME/Sites $HOME/Dropbox $HOME)
@@ -33,6 +48,12 @@ HISTSIZE=1000000
 SAVEHIST=1000000
 HISTFILE=~/.zsh_history
 HIST_STAMPS="yyyy-mm-dd"
+
+
+# Load and run compinit
+autoload -U compinit
+compinit -i
+
 
 # asdf
 . $HOME/.asdf/asdf.sh

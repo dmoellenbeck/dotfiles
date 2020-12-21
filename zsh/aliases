@@ -11,6 +11,14 @@ alias pi='ping -Anc 5 1.1.1.1'
 alias src='. ~/.zshrc'
 alias srm='srm -iv'
 
+alias now='date +%s'
+
+alias weather='curl https://v2.wttr.in'
+alias weather_berlin='curl https://v2.wttr.in/Berlin'
+
+alias ll='ls -la'
+alias lh='ls -lah'
+
 # Moving around
 alias ..='cd ..'
 alias ...='cd ../../'
