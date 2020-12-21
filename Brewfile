@@ -10,7 +10,9 @@ tap "homebrew/cask-drivers"
 tap "homebrew/cask-fonts"
 tap "homebrew/core"
 tap "homebrew/services"
+tap "isen-ng/dotnet-sdk-versions"
 tap "puma/puma"
+tap "rodionovd/taps"
 tap "stripe/stripe-cli"
 tap "universal-ctags/universal-ctags"
 tap "mas-cli/tap"
@@ -28,9 +30,11 @@ brew "asciidoctor"
 brew "autoconf" # asdf dependency
 brew "automake" # asdf dependency
 brew "awscli"
+brew "azure-cli"
 brew "bash"
 brew "bash-completion"
 brew "bat"
+brew "blueutil"
 brew "bramstein/fonttools/woff2"
 brew "cloc"
 brew "cmake"
@@ -47,12 +51,15 @@ brew "fzf"
 brew "gifsicle"
 brew "git"
 brew "git-quick-stats"
+brew "bfg"
+brew "openjdk"
 brew "gmp" # Vim dependency
 brew "gnupg" # asdf-nodejs dependency
 brew "highlight"
 brew "htop"
 brew "httpie"
 brew "imagemagick"
+brew "imapsync"
 brew "jhead"
 brew "jq"
 brew "less"
@@ -60,13 +67,16 @@ brew "libtermkey"
 brew "libtool" # asdf dependency
 brew "libxslt" # asdf dependency
 brew "libyaml" # asdf dependency
+brew "mackup"
 brew "mas"
 brew "media-info"
 brew "memcached"
+brew "minikube"
 brew "most"
 brew "multitail"
 brew "neofetch"
 brew "neovim", args: ["HEAD"]
+brew "nmap"
 brew "onefetch"
 brew "overmind"
 brew "pandoc"
@@ -75,6 +85,7 @@ brew "pandoc"
 #brew "postgresql", restart_service: true
 #brew "puma/puma/puma-dev"
 brew "python"
+brew "p7zip"
 brew "ranger"
 brew "readline"
 brew "redis"
@@ -99,6 +110,7 @@ brew "universal-ctags/universal-ctags/universal-ctags", args: ["HEAD"]
 brew "wget"
 brew "xz"
 brew "yarn"
+brew "ykpers"
 brew "youtube-dl"
 brew "zsh"
 
@@ -106,7 +118,6 @@ brew "zsh"
 # https://github.com/caskroom/homebrew-cask
 
 cask "1password"
-#cask "alfred"
 cask "aerial"
 cask "airfoil"
 cask "arq"
@@ -117,35 +128,32 @@ cask "audio-hijack"
 #cask "brave-browser"
 #cask "carbon-copy-cloner"
 cask "cheatsheet"
-cask "cleanmymac"
 #cask "clover-configurator"
 cask "cyberduck"
 cask "daisydisk"
 #cask "dash"
 cask "devonthink-pro-office"
 cask "dropbox"
-#cask "duet"
 cask "elgato-stream-deck"
+cask "flutter"
 cask "font-caskaydia-cove-nerd-font"
 cask "font-fira-code-nerd-font"
 cask "font-iosevka-nerd-font"
-cask "font-jetbrainsmono-nerd-font"
-cask "font-victormono-nerd-font"
+cask "font-jetbrains-mono-nerd-font"
+cask "font-victor-mono-nerd-font"
 cask "franz"
-#cask "google-chrome"
-#cask "google-cloud-sdk"
 #cask "handbrake"
 cask "hazel"
 cask "istat-menus"
-#cask "iterm2"
+cask "iterm2"
+cask "jabra-direct"
 cask "keka"
 cask "little-snitch"
+cask "logitech-options"
+cask "logitech-camera-settings"
 cask "micro-snitch"
 cask "microsoft-edge"
-cask "microsoft-excel"
-cask "microsoft-word"
-cask "microsoft-outlook"
-cask "microsoft-powerpoint"
+cask "microsoft-office"
 cask "microsoft-teams"
 cask "moneymoney"
 cask "obs"
@@ -153,32 +161,44 @@ cask "obs-virtualcam"
 cask "onedrive"
 cask "parallels-desktop"
 cask "pdftotext"
-cask "pgadmin4"
-cask "postico"
+#cask "pgadmin4"
+#cask "postico"
 cask "postman"
-#cask "send-to-kindle"
+cask "receipts"
+cask "send-to-kindle"
 cask "screenflick"
 cask "signal"
 cask "skype"
 cask "slack"
 cask "soundflower"
+cask "soundsource"
 cask "steam"
+cask "sonos"
+cask "spark"
 cask "superduper"
+cask "the-unarchiver"
+cask "tunnelblick"
+
 #cask "virtualbox"
+cask "visual-studio-code"
 cask "whatsapp"
 cask "workflowy"
 cask "wireshark"
+cask "zoom"
 cask "zoomus"
-
 # rubocop:disable Style/NumericLiterals
-mas "Deliveries", id: 924726344
-mas "Magnet", id: 441258766
+mas "AusweisApp2", id: 948660805
+mas "Disk Diet", id: 445512770
+mas "DuckDuckGo Privacy Essentials", id: 1482920575
+mas "Duplicates Cleaner", id: 1012324495
+mas "HP Smart", id: 1474276998
+mas "Microsoft To Do", id: 1274495053
 mas "Motif", id: 1404636482
 mas "OmniGraffle", id: 1142578753
 mas "Pages", id: 409201541
 mas "ReadKit", id: 588726889
-mas "Spark", id: 1176895641
-mas "Things 3", id: 904280696
+
+mas "Things", id: 904280696
 mas "ToothFairy", id: 1191449274
 mas "WHITEWALL", id: 1286836110
-#mas "Xcode", id: 497799835
+mas "Xcode", id: 497799835
