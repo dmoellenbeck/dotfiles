@@ -1,7 +1,11 @@
-vim/bundle
-vim/.netrwhist
 .gitconfig.local
-.zshrc.local
 .vimrc.local
+.zshrc.local
+Brewfile.lock.json
 local/*
+<<<<<<< HEAD
 machines/joshuas*
+=======
+vim/.netrwhist
+vim/bundle
+>>>>>>> upstream/master

@@ -4,8 +4,6 @@
   "diagnostic.infoSign": "",
   "diagnostic.hintSign": "ﯦ",
 
-  "diagnostic.checkCurrentLine": true,
-
   "eslint.run": "onSave",
   "eslint.autoFixOnSave": true,
   "eslint.filetypes": [
@@ -17,13 +15,16 @@
     "vue"
   ],
 
+  "javascript.format.enabled": false,
+  "javascript.showUnused": false,
+  "javascript.suggestionActions.enabled": false,
+  "javascript.validate.enable": false,
+
   "emmet.includeLanguages": {
     "javascript": "javascriptreact"
   },
 
-  "emmet.excludeLanguages": [
-    "haml"
-  ],
+  "emmet.excludeLanguages": ["haml"],
 
   "prettier.disableLanguages": [],
   "prettier.singleQuote": true,

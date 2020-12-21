@@ -149,12 +149,12 @@ command! PrettyJSON :call <sid>PrettyJSON()
 " specify syntax highlighting for specific files
 augroup file_types
   autocmd!
+  autocmd Bufread,BufNewFile *.asciidoc,*.adoc,*.asc,*.ad set filetype=asciidoctor
+  autocmd Bufread,BufNewFile *.mdx set filetype=markdown
   autocmd Bufread,BufNewFile *.spv set filetype=php
-  autocmd Bufread,BufNewFile *Brewfile,pryrc set filetype=ruby
-  autocmd Bufread,BufNewFile *prettierrc,*stylelintrc,*babelrc set filetype=json
+  autocmd Bufread,BufNewFile *prettierrc,*stylelintrc,*babelrc,*eslintrc set filetype=json
   autocmd Bufread,BufNewFile aliases,functions,prompt,tmux,oh-my-zsh,opts set filetype=zsh
   autocmd Bufread,BufNewFile gitconfig set filetype=gitconfig
-  autocmd Bufread,BufNewFile *.asciidoc,*.adoc,*.asc,*.ad set filetype=asciidoctor
 augroup END
 
 " Remove trailing whitespace on save for specified file types.
@@ -209,6 +209,10 @@ nnoremap <leader>5 :bnext<CR>
 nnoremap <leader>6 :bprev<CR>
 map <C-t> <esc>:tabnew<CR> " Open a new tab with Ctrl+T
 
+" Move tabs left/right
+noremap <A-Left>  :-tabmove<cr>
+noremap <A-Right> :+tabmove<cr>
+
 " Expand active file directory
 cnoremap <expr> %%  getcmdtype() == ':' ? expand('%:h').'/' : '%%'
 
@@ -258,18 +262,19 @@ Plug 'ntpeters/vim-better-whitespace'   " Better whitespace highlighting for    
 Plug 'machakann/vim-highlightedyank'    " Make the yanked region apparent!                      | https://github.com/machakann/vim-highlightedyank
 Plug 'diepm/vim-rest-console'           " A REST console for Vim.                               | https://github.com/diepm/vim-rest-console
 Plug 'rhysd/git-messenger.vim'          " Reveal the commit messages under the cursor           | https://github.com/rhysd/git-messenger.vim
-Plug 'terryma/vim-multiple-cursors'     " True Sublime Text style multiple selections for Vim   | https://github.com/terryma/vim-multiple-cursors
+Plug 'mg979/vim-visual-multi', {'branch': 'master'} " Multiple cursors plugin for vim/neovim    | https://github.com/mg979/vim-visual-multi
 Plug 'airblade/vim-gitgutter'           " A Vim plugin which shows a git diff in the gutter     | https://github.com/airblade/vim-gitgutter
 Plug 'reedes/vim-textobj-quote'         " Use ‘curly’ quote characters in Vim                   | https://github.com/reedes/vim-textobj-quote
 Plug 'norcalli/nvim-colorizer.lua'      " The fastest Neovim colorizer.                         | https://github.com/norcalli/nvim-colorizer.lua
 
-" Code Completion
+" Code Completion & Linting
 Plug 'neoclide/coc.nvim',
-      \ {'branch': 'release'}                   " Intellisense engine for vim8 & neovim   | https://github.com/neoclide/coc.nvim
+      \ {'branch': 'release'}                         " Intellisense engine for vim8 & neovim   | https://github.com/neoclide/coc.nvim
+Plug 'dense-analysis/ale'                             " Asynchronous Lint Engine                | https://github.com/dense-analysis/ale
 Plug 'sdras/vue-vscode-snippets'                      " Vue VSCode Snippets                     | https://github.com/sdras/vue-vscode-snippets
 Plug 'mattn/emmet-vim'                                " emmet for vim                           | https://github.com/mattn/emmet-vim
-Plug 'dsznajder/vscode-es7-javascript-react-snippets',
-      \ { 'do': 'yarn install --frozen-lockfile && yarn compile' } " React VSCode snippets      | https://github.com/dsznajder/vscode-es7-javascript-react-snippets
+Plug 'joshukraine/vscode-es7-javascript-react-snippets',
+      \ { 'do': 'yarn install --frozen-lockfile && yarn compile' } " React VSCode snippets      | https://github.com/joshukraine/vscode-es7-javascript-react-snippets
 
 " Ruby-specific
 Plug 'vim-ruby/vim-ruby'                " Vim/Ruby Configuration Files                          | https://github.com/vim-ruby/vim-ruby
@@ -277,8 +282,8 @@ Plug 'kana/vim-textobj-user'            " Create your own text objects          
 Plug 'nelstrom/vim-textobj-rubyblock'   " A custom text object for selecting ruby blocks        | https://github.com/nelstrom/vim-textobj-rubyblock
 
 " Searching and Navigation
-Plug 'junegunn/fzf', { 'do': './install --bin' }
-Plug 'junegunn/fzf.vim'
+Plug 'junegunn/fzf', { 'do': './install --bin' } " A command-line fuzzy finder                  | https://github.com/junegunn/fzf
+Plug 'junegunn/fzf.vim'                 " FZF for Vim                                           | https://github.com/junegunn/fzf.vim
 Plug 'scrooloose/nerdtree'              " A tree explorer plugin for vim                        | https://github.com/scrooloose/nerdtree
 Plug 'Xuyuanp/nerdtree-git-plugin'      " A plugin of NERDTree showing git status               | https://github.com/Xuyuanp/nerdtree-git-plugin
 Plug 'brooth/far.vim'                   " Find And Replace Vim plugin                           | https://github.com/brooth/far.vim
@@ -316,6 +321,10 @@ Plug 'dag/vim-fish'                     " Vim support for editing fish scripts  
 Plug 'cespare/vim-toml'                 " Vim syntax for TOML                                   | https://github.com/cespare/vim-toml
 Plug 'leafgarland/typescript-vim'       " Typescript syntax files for Vim                       | https://github.com/leafgarland/typescript-vim
 Plug 'Yggdroot/indentLine'              " Display indention levels with thin vertical lines     | https://github.com/Yggdroot/indentLine
+Plug 'jparise/vim-graphql'              " GraphQL file detection, syntax highlighting, ...      | https://github.com/jparise/vim-graphql
+Plug 'styled-components/vim-styled-components',
+      \ { 'branch': 'main' }            " Vim bundle for styled components                      | https://github.com/styled-components/vim-styled-components
+Plug 'iloginow/vim-stylus'              " Stylus syntax highlighting                            | https://github.com/iloginow/vim-stylus
 
 " Tim Pope
 Plug 'tpope/vim-surround'               " Quoting/parenthesizing made simple                    | https://github.com/tpope/vim-surround
@@ -334,28 +343,28 @@ call plug#end()
 " Plugin-specifc Mappings & Settings
 
 " Far.vim
-let g:far#source = 'agnvim'
+let g:far#source = 'rg'
 let g:far#file_mask_favorites = ['%', '**/*.*', '**/*.html', '**/*.haml', '**/*.js', '**/*.css', '**/*.scss', '**/*.rb']
 
 " NERDTree
 nmap <silent> <F3> :NERDTreeToggle<CR>
 map <leader>\ :NERDTreeToggle<CR>
 let NERDTreeShowHidden=1
-let NERDTreeIgnore=['\.png$', '\.jpg$', '\.gif$', '\.mp3$', '\.ogg$', '\.mp4$',
-      \ '\.avi$','.webm$','.mkv$','\.pdf$', '\.zip$', '\.tar.gz$',
-      \ '\.rar$']
+" let NERDTreeIgnore=['\.png$', '\.jpg$', '\.gif$', '\.mp3$', '\.ogg$', '\.mp4$',
+"       \ '\.avi$','.webm$','.mkv$','\.pdf$', '\.zip$', '\.tar.gz$',
+"       \ '\.rar$', '\.git$']
 let NERDTreeMinimalUI = 1
 let g:NERDTreeDirArrowExpandable = ''
 let g:NERDTreeDirArrowCollapsible = ''
 
-let g:NERDTreeIndicatorMapCustom = {
+let g:NERDTreeGitStatusIndicatorMapCustom = {
       \ "Modified"  : "✹",
       \ "Staged"    : "✚",
       \ "Untracked" : "",
-      \ "Renamed"   : "➜",
+      \ "Renamed"   : "»",
       \ "Unmerged"  : "═",
       \ "Deleted"   : "✖",
-      \ "Dirty"     : "✹",
+      \ "Dirty"     : "~",
       \ "Clean"     : "✔︎",
       \ 'Ignored'   : '☒',
       \ "Unknown"   : ""
@@ -439,9 +448,8 @@ map <leader>t :Files<CR>
 map <leader>y :Rg<CR>
 
 command! -bang -nargs=* Rg
-      \ call fzf#vim#grep(
-      \   'rg --column --line-number --no-heading --color=always --smart-case '.shellescape(<q-args>), 1,
-      \   fzf#vim#with_preview(), <bang>0)
+      \ call fzf#vim#grep('rg --column --line-number --no-heading --color=always --smart-case --glob "!yarn.lock" '.shellescape(<q-args>), 1,
+      \ fzf#vim#with_preview({'options': '--delimiter : --nth 4..'}), <bang>0)
 
 " Custom rails.vim commands
 " command! Rroutes :e config/routes.rb
@@ -475,6 +483,18 @@ let g:vrc_curl_opts = {
       \ '-L': '',
       \ '-i': '',
       \ }
+
+" ALE
+let g:ale_disable_lsp = 1
+let g:ale_fix_on_save = 1
+let g:ale_linters_explicit = 1
+let g:ale_sign_error = '>>'
+let g:ale_sign_warning = '!!'
+
+let g:ale_linters = {
+\   'haml': ['hamllint'],
+\   'eruby': ['ruumba'],
+\}
 
 " Coc
 " https://github.com/neoclide/coc.nvim
@@ -612,10 +632,6 @@ exe 'source' stdpath('config') . '/lightline.vim'
 highlight clear IncSearch
 highlight IncSearch term=reverse cterm=reverse ctermfg=7 ctermbg=0 guifg=Black guibg=White
 highlight Comment cterm=italic gui=italic
-
-" nvim-colorizer.lua
-lua require'colorizer'.setup()
-
 " }}}
 
 " Local {{{
