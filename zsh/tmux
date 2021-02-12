@@ -44,4 +44,4 @@ ensure_tmux_is_running() {
 
 # ensure_tmux_is_running
 
-. ~/bin/tmuxinator.zsh
+. /usr/local/share/zsh/site-functions/_tmuxinator

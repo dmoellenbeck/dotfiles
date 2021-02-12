@@ -116,3 +116,6 @@
 
 [url "https://"]
   insteadOf = git://
+[user]
+	email = git@moellenbeck.org
+	name = Daniel Moellenbeck

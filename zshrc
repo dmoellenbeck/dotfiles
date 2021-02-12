@@ -7,7 +7,7 @@ export LANG=en_US.UTF-8
 
 
 # Load all of the config files in ~/oh-my-zsh that end in .zsh
-for config_file ($ZSH/lib/*.zsh) source $config_file
+#for config_file ($ZSH/lib/*.zsh) source $config_file
 
 
 # Extend Autocomplete Search Path
@@ -84,5 +84,8 @@ export KEYTIMEOUT=1
 
 # Include local settings
 [[ -f ~/.zshrc.local ]] && . ~/.zshrc.local
-
 . $HOME/dotfiles/zsh/profiler.stop
+export PATH="/usr/local/opt/openjdk/bin:$PATH"
+export PATH="/usr/local/opt/openjdk/bin:$PATH"
+
+source /Users/moellinger/.config/broot/launcher/bash/br
