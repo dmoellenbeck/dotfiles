@@ -14,7 +14,7 @@ export LANG=en_US.UTF-8
 fpath=($HOME/.zsh/lib/completions $fpath)
 
 
-export PATH=$HOME/bin:/usr/local/bin:/usr/local/sbin:/usr/bin:/bin:/usr/sbin:/sbin:$PATH
+export PATH=$HOME/bin:/usr/local/bin:/usr/local/sbin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/Caskroom/google-cloud-sdk/latest/google-cloud-sdk/bin:$PATH
 
 export EDITOR="nvim"
 export BUNDLER_EDITOR=$EDITOR
