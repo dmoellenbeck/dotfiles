@@ -14,7 +14,7 @@ alias srm='srm -iv'
 alias now='date +%s'
 
 alias weather='curl https://v2.wttr.in'
-alias weather_berlin='curl https://v2.wttr.in/Berlin'
+alias weather_re='curl https://v2.wttr.in/Recklinghausen'
 
 alias ll='ls -la'
 alias lh='ls -lah'

@@ -19,13 +19,13 @@ function fs() {
 
 # No arguments: `git status`
 # With arguments: acts like `git`
-g() {
-  if [[ $# -gt 0 ]]; then
-    git "$@"
-  else
-    git status
-  fi
-}
+#g() {
+#  if [[ $# -gt 0 ]]; then
+#    git "$@"
+#  else
+#    git status
+#  fi
+# }
 
 # https://github.com/robbyrussell/oh-my-zsh/blob/master/plugins/rails/rails.plugin.zsh
 function _rails_command () {

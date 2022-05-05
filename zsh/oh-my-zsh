@@ -6,8 +6,10 @@ COMPLETION_WAITING_DOTS="true"
 
 plugins=(
 history
+git
 # shrink-path
 yarn
+
 )
 
 . $ZSH/oh-my-zsh.sh

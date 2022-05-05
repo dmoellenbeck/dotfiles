@@ -1,3 +1,10 @@
+# Enable Powerlevel10k instant prompt. Should stay close to the top of ~/.zshrc.
+# Initialization code that may require console input (password prompts, [y/n]
+# confirmations, etc.) must go above this block; everything else may go below.
+if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]; then
+  source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
+fi
+
 # ~/.zshrc
 . $HOME/dotfiles/zsh/profiler.start
 
@@ -16,7 +23,7 @@ fpath=($HOME/.zsh/lib/completions $fpath)
 
 export PATH=$HOME/bin:/usr/local/bin:/usr/local/sbin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/Caskroom/google-cloud-sdk/latest/google-cloud-sdk/bin:$PATH
 
-export EDITOR="nvim"
+export EDITOR="code"
 export BUNDLER_EDITOR=$EDITOR
 export MANPAGER="less -X" # Don’t clear the screen after quitting a manual page
 export HOMEBREW_CASK_OPTS="--appdir=/Applications"
@@ -31,6 +38,8 @@ export XDG_CACHE_HOME="$HOME/.cache"
 export DOTFILES="$HOME/dotfiles"
 HOST_NAME=$(scutil --get HostName)
 export HOST_NAME
+
+export ZSH_THEME="powerlevel10k/powerlevel10k"
 
 . $DOTFILES/zsh/oh-my-zsh
 . $DOTFILES/zsh/opts
@@ -89,3 +98,6 @@ export PATH="/usr/local/opt/openjdk/bin:$PATH"
 export PATH="/usr/local/opt/openjdk/bin:$PATH"
 
 source /Users/moellinger/.config/broot/launcher/bash/br
+
+# To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
+[[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
