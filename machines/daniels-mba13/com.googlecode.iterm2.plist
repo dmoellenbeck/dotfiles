@@ -211,7 +211,7 @@
 			<key>Columns</key>
 			<integer>160</integer>
 			<key>Command</key>
-			<string></string>
+			<string>/usr/local/bin/zsh</string>
 			<key>Cursor Color</key>
 			<dict>
 				<key>Blue Component</key>
@@ -244,7 +244,7 @@
 				<string>0</string>
 			</dict>
 			<key>Custom Command</key>
-			<string>No</string>
+			<string>Yes</string>
 			<key>Custom Directory</key>
 			<string>No</string>
 			<key>Default Bookmark</key>
@@ -578,11 +578,13 @@
 			<key>Name</key>
 			<string>Default</string>
 			<key>Non Ascii Font</key>
-			<string>FiraCodeNerdFontCompleteM-Regular 12</string>
+			<string>JetBrainsMonoNerdFontCompleteM-Regular 13</string>
 			<key>Non-ASCII Anti Aliased</key>
-			<true/>
+			<false/>
+			<key>Non-ASCII Ligatures</key>
+			<false/>
 			<key>Normal Font</key>
-			<string>FiraCodeNerdFontCompleteM-Regular 12</string>
+			<string>JetBrainsMonoNerdFontCompleteM-Regular 14</string>
 			<key>Option Key Sends</key>
 			<integer>0</integer>
 			<key>Prompt Before Closing 2</key>
@@ -594,7 +596,7 @@
 			<key>Screen</key>
 			<integer>-1</integer>
 			<key>Scrollback Lines</key>
-			<integer>1000</integer>
+			<integer>0</integer>
 			<key>Selected Text Color</key>
 			<dict>
 				<key>Blue Component</key>
@@ -626,13 +628,13 @@
 			<key>Terminal Type</key>
 			<string>xterm-256color</string>
 			<key>Thin Strokes</key>
-			<integer>4</integer>
+			<integer>3</integer>
 			<key>Transparency</key>
 			<real>0.0</real>
 			<key>Unicode Version</key>
-			<integer>9</integer>
+			<integer>8</integer>
 			<key>Unlimited Scrollback</key>
-			<false/>
+			<true/>
 			<key>Use Bold Font</key>
 			<true/>
 			<key>Use Bright Bold</key>
