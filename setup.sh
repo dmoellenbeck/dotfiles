@@ -17,6 +17,7 @@ set -e # Terminate script if anything exits with a non-zero value
 
 # Global variables
 DRY_RUN=false
+INSTALL_BREW=false
 
 show_help() {
   cat <<EOF
@@ -27,11 +28,14 @@ It can be run safely multiple times on the same machine.
 
 Options:
   --dry-run    Show what would be done without making any changes
+  --brew       Also install Homebrew packages (base + machine-specific)
   --help       Show this help message
 
 Examples:
-  $0                # Normal setup
+  $0                # Normal setup (symlinks only)
   $0 --dry-run      # Preview changes without applying them
+  $0 --brew         # Setup + install Homebrew packages
+  $0 --dry-run --brew  # Preview including Homebrew packages
 EOF
 }
 
@@ -40,6 +44,10 @@ while [[ $# -gt 0 ]]; do
   case $1 in
     --dry-run)
       DRY_RUN=true
+      shift
+      ;;
+    --brew)
+      INSTALL_BREW=true
       shift
       ;;
     --help)
@@ -139,6 +147,11 @@ main() {
   setup_symlinks
   setup_shell_integration
   setup_tmux
+
+  # Optionally install Homebrew packages
+  if [[ "${INSTALL_BREW}" == "true" ]]; then
+    install_homebrew_packages
+  fi
 
   dotfiles_echo "Dotfiles setup complete!"
   show_next_steps
@@ -359,6 +372,55 @@ setup_shell_integration() {
   fi
 }
 
+install_homebrew_packages() {
+  dotfiles_echo "Installing Homebrew packages..."
+
+  # Source machine detection
+  if [[ -f "${DOTFILES}/scripts/detect-machine-type.sh" ]]; then
+    # shellcheck source=scripts/detect-machine-type.sh
+    source "${DOTFILES}/scripts/detect-machine-type.sh"
+  else
+    dotfiles_warn "Machine detection script not found - skipping machine-specific packages"
+    return 0
+  fi
+
+  local machine_type
+  machine_type=$(detect_machine_type)
+  dotfiles_info "Detected machine type: %s" "${machine_type}"
+
+  # Base packages (via stow symlink to ~/Brewfile)
+  if [[ -f "${HOME}/Brewfile" ]]; then
+    if [[ "${DRY_RUN}" == "true" ]]; then
+      dotfiles_info "[DRY RUN] Would run: brew bundle --file=${HOME}/Brewfile"
+    else
+      run_command "brew bundle --file='${HOME}/Brewfile'" "Install base Homebrew packages"
+    fi
+  else
+    dotfiles_info "No ~/Brewfile found - skipping base packages"
+  fi
+
+  # Machine-specific packages
+  local machine_brewfile="${DOTFILES}/brew/Brewfile.${machine_type}"
+  if [[ -f "${machine_brewfile}" ]]; then
+    if [[ "${DRY_RUN}" == "true" ]]; then
+      dotfiles_info "[DRY RUN] Would run: brew bundle --file=${machine_brewfile}"
+    else
+      run_command "brew bundle --file='${machine_brewfile}'" "Install ${machine_type} packages"
+    fi
+  else
+    dotfiles_info "No machine-specific Brewfile found for: %s" "${machine_type}"
+  fi
+
+  # Local overrides (not tracked in git)
+  if [[ -f "${HOME}/Brewfile.local" ]]; then
+    if [[ "${DRY_RUN}" == "true" ]]; then
+      dotfiles_info "[DRY RUN] Would run: brew bundle --file=${HOME}/Brewfile.local"
+    else
+      run_command "brew bundle --file='${HOME}/Brewfile.local'" "Install local Brewfile overrides"
+    fi
+  fi
+}
+
 setup_tmux() {
   if command -v tmux &>/dev/null; then
     if [ ! -d "${HOME}/.terminfo" ]; then
@@ -393,7 +455,24 @@ show_next_steps() {
   echo
   echo "Possible next steps:"
   echo "-> Install Zap (https://www.zapzsh.com)"
-  echo "-> Install Homebrew packages (brew bundle install)"
+
+  if [[ "${INSTALL_BREW}" != "true" ]]; then
+    echo "-> Install Homebrew packages: ./setup.sh --brew"
+    echo "   Or manually:"
+    echo "   - Base packages: brew bundle --file=~/Brewfile"
+
+    # Show machine-specific Brewfile if detected
+    if [[ -f "${DOTFILES}/scripts/detect-machine-type.sh" ]]; then
+      # shellcheck source=scripts/detect-machine-type.sh
+      source "${DOTFILES}/scripts/detect-machine-type.sh"
+      local machine_type
+      machine_type=$(detect_machine_type)
+      if [[ -f "${DOTFILES}/brew/Brewfile.${machine_type}" ]]; then
+        echo "   - Machine packages: brew bundle --file=brew/Brewfile.${machine_type}"
+      fi
+    fi
+  fi
+
   if command -v tmux &>/dev/null; then
     echo "-> Install Tmux plugins with <prefix> + I (https://github.com/tmux-plugins/tpm)"
   fi

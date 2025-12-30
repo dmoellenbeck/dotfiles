@@ -1,0 +1,100 @@
+# Brewfile.macmini
+#
+# Mac Mini PowerHouse - Server-specific packages
+# Extends the base Brewfile with server, Docker, and monitoring tools.
+#
+# Role: Development server, Docker host (Paperless-ngx), 24/7 services
+#
+# Related:
+#   - https://github.com/dmoellenbeck/home_lab/issues/1
+#   - https://github.com/dmoellenbeck/home_lab/issues/2
+#
+# Usage:
+#   brew bundle --file=brew/Brewfile.macmini
+#
+
+# =============================================================================
+# Container Runtime
+# =============================================================================
+# OrbStack - Fast, lightweight Docker Desktop alternative for macOS
+# Lower resource usage (~500MB idle), native macOS integration
+cask "orbstack"
+
+# =============================================================================
+# Backup & Sync Tools
+# =============================================================================
+# restic - Fast, secure backup program
+brew "restic"
+
+# rclone - Rsync for cloud storage (OneDrive, Google Drive, etc.)
+brew "rclone"
+
+# =============================================================================
+# Monitoring & Observability
+# =============================================================================
+# glances - Cross-platform system monitoring (better than htop for servers)
+brew "glances"
+
+# Note: Prometheus and Grafana are better run as Docker containers
+# for production use. Install via Docker Compose instead:
+# - ghcr.io/prometheus/prometheus
+# - grafana/grafana
+
+# =============================================================================
+# Paperless-ngx Support (Document Management)
+# =============================================================================
+# tesseract - OCR engine for document text extraction
+brew "tesseract"
+
+# tesseract language packs (German + English)
+brew "tesseract-lang"
+
+# ghostscript - PDF/PostScript processing (already in base, but ensure installed)
+# brew "ghostscript"
+
+# poppler - PDF rendering library (already in base, but ensure installed)
+# brew "poppler"
+
+# =============================================================================
+# Network Administration Tools
+# (For UniFi network management from Mac Mini)
+# =============================================================================
+# iperf3 - Network bandwidth measurement
+brew "iperf3"
+
+# mtr - Network diagnostic tool (traceroute + ping)
+brew "mtr"
+
+# dog - Modern DNS client (like dig, but better)
+brew "dog"
+
+# nmap - Network exploration and security scanner
+brew "nmap"
+
+# =============================================================================
+# Server Utilities
+# =============================================================================
+# screen - Terminal multiplexer (alternative to tmux for background jobs)
+brew "screen"
+
+# mosh - Mobile shell (better SSH for unstable connections)
+brew "mosh"
+
+# =============================================================================
+# Development Tools (Server-specific)
+# =============================================================================
+# dive - Explore Docker image layers
+brew "dive"
+
+# ctop - Container metrics (top for containers)
+brew "ctop"
+
+# =============================================================================
+# Casks (GUI Apps) - Minimal for server use
+# =============================================================================
+# Note: Mac Mini may run headless, so minimize GUI apps
+
+# Stats - System monitor in menu bar (if using GUI)
+cask "stats"
+
+# vim: set filetype=ruby:

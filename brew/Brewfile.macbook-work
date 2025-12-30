@@ -1,0 +1,85 @@
+# Brewfile.macbook-work
+#
+# Work MacBook - Employer-provided laptop packages
+# Extends the base Brewfile with work-specific tools.
+#
+# IMPORTANT: Respect employer IT policies!
+# Some tools may be restricted or managed by your company.
+# Check with IT before installing certain applications.
+#
+# Related:
+#   - https://github.com/dmoellenbeck/home_lab/issues/1
+#   - https://github.com/dmoellenbeck/home_lab/issues/2
+#
+# Usage:
+#   brew bundle --file=brew/Brewfile.macbook-work
+#
+
+# =============================================================================
+# Communication & Collaboration
+# =============================================================================
+# Microsoft Teams - Work communication (may be managed by employer)
+cask "microsoft-teams"
+
+# Slack - Team messaging
+cask "slack"
+
+# Zoom - Video conferencing
+cask "zoom"
+
+# =============================================================================
+# Productivity
+# =============================================================================
+# Rectangle - Window management (free, open-source)
+cask "rectangle"
+
+# Raycast - Spotlight replacement with extensions
+# Alternative: alfred (already in base Brewfile)
+cask "raycast"
+
+# =============================================================================
+# Development Tools
+# =============================================================================
+# Visual Studio Code - Primary editor
+cask "visual-studio-code"
+
+# Docker - Container runtime (if allowed by IT)
+# Note: Consider OrbStack as lighter alternative
+# cask "docker"
+
+# Postman - API development and testing
+cask "postman"
+
+# =============================================================================
+# Fonts (Development)
+# =============================================================================
+# Note: Some fonts already in base Brewfile
+# These are commonly used in development
+
+cask "font-inter"
+
+# =============================================================================
+# Utilities
+# =============================================================================
+# Tailscale - VPN for remote access to home network
+cask "tailscale"
+
+# =============================================================================
+# Optional - Uncomment if needed and allowed by IT
+# =============================================================================
+
+# AWS tools (if doing AWS work)
+# brew "awscli"
+# cask "aws-vpn-client"
+
+# Azure tools (if doing Azure work)
+# brew "azure-cli"
+
+# Google Cloud tools (if doing GCP work)
+# cask "google-cloud-sdk"
+
+# VPN clients (company-specific)
+# cask "cisco-secure-client"
+# cask "globalprotect"
+
+# vim: set filetype=ruby:

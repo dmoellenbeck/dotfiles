@@ -1,0 +1,104 @@
+# Brewfile.macbook-personal
+#
+# Personal MacBook - Full control, no restrictions
+# Extends the base Brewfile with personal tools and applications.
+#
+# Related:
+#   - https://github.com/dmoellenbeck/home_lab/issues/1
+#   - https://github.com/dmoellenbeck/home_lab/issues/2
+#
+# Usage:
+#   brew bundle --file=brew/Brewfile.macbook-personal
+#
+
+# =============================================================================
+# Development Tools
+# =============================================================================
+# Visual Studio Code
+cask "visual-studio-code"
+
+# iTerm2 - Better terminal emulator
+cask "iterm2"
+
+# Docker or OrbStack
+cask "orbstack"
+
+# =============================================================================
+# Productivity & Utilities
+# =============================================================================
+# Rectangle - Window management
+cask "rectangle"
+
+# Alfred - Spotlight replacement (or Raycast)
+# Note: Already in base Brewfile
+# cask "alfred"
+
+# 1Password - Password manager
+cask "1password"
+cask "1password-cli"
+
+# =============================================================================
+# Communication & Social
+# =============================================================================
+# Discord - Gaming and community chat
+cask "discord"
+
+# =============================================================================
+# Media & Entertainment
+# =============================================================================
+# Spotify - Music streaming
+cask "spotify"
+
+# VLC - Media player
+cask "vlc"
+
+# IINA - Modern media player for macOS
+cask "iina"
+
+# =============================================================================
+# Creative Tools
+# =============================================================================
+# Pixelmator Pro - Image editing
+cask "pixelmator-pro"
+
+# Affinity Photo - Professional photo editing
+# cask "affinity-photo"
+
+# Affinity Designer - Vector graphics
+# cask "affinity-designer"
+
+# =============================================================================
+# Utilities
+# =============================================================================
+# Tailscale - VPN for remote access
+cask "tailscale"
+
+# AppCleaner - Clean app uninstalls
+cask "appcleaner"
+
+# Keka - File archiver
+cask "keka"
+
+# =============================================================================
+# Personal Productivity
+# =============================================================================
+# Note: Notion and Obsidian already in base Brewfile
+
+# Bear - Note-taking (if preferred over Obsidian)
+# mas "Bear", id: 1091189122
+
+# Things 3 - Task management
+# mas "Things 3", id: 904280696
+
+# =============================================================================
+# Optional - Uncomment if needed
+# =============================================================================
+
+# Gaming
+# cask "steam"
+# cask "gog-galaxy"
+
+# Streaming
+# cask "obs"
+
+# vim: set filetype=ruby:
