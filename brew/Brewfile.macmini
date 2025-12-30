@@ -3,7 +3,6 @@
 # Mac Mini PowerHouse - Server-specific packages
 # Extends the base Brewfile with server, Docker, and monitoring tools.
 #
-# Network: PRIVATE VLAN (10.10.20.30)
 # Role: Development server, Docker host (Paperless-ngx), 24/7 services
 #
 # Related:

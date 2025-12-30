@@ -7,9 +7,6 @@
 # Some tools may be restricted or managed by your company.
 # Check with IT before installing certain applications.
 #
-# Network: WORK VLAN (10.10.10.x) via dont-panic SSID
-# Access: SSH/DevPod to Mac Mini (10.10.20.30)
-#
 # Related:
 #   - https://github.com/dmoellenbeck/home_lab/issues/1
 #   - https://github.com/dmoellenbeck/home_lab/issues/2

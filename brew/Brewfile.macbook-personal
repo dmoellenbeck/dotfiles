@@ -3,8 +3,6 @@
 # Personal MacBook - Full control, no restrictions
 # Extends the base Brewfile with personal tools and applications.
 #
-# Network: PRIVATE VLAN (10.10.20.x) via deep-learning-42 SSID
-#
 # Related:
 #   - https://github.com/dmoellenbeck/home_lab/issues/1
 #   - https://github.com/dmoellenbeck/home_lab/issues/2
