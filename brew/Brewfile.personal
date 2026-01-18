@@ -1,0 +1,240 @@
+# Personal Brewfile for macOS Migration
+# Generated: 2025-12-12
+# Based on migration analysis from homebrew-migration-candidates.md
+#
+# Usage: brew bundle install --file=Brewfile.personal
+#        brew bundle cleanup --file=Brewfile.personal --force (removes apps not in this file)
+#
+# This Brewfile consolidates:
+# - Currently Homebrew-managed applications
+# - High-priority migration candidates
+# - Development tools and utilities
+# - Nerd Fonts for terminal environments
+# - Mac App Store applications (via mas)
+
+# ============================================================================
+# Taps (Custom Homebrew Repositories)
+# ============================================================================
+
+tap "homebrew/bundle"
+tap "homebrew/cask-fonts"
+tap "homebrew/cask-versions"    # Required for WISO Steuer versioned casks
+tap "homebrew/services"
+
+# ============================================================================
+# Command-Line Tools (Formulae)
+# ============================================================================
+
+# Mac App Store CLI tool for managing App Store applications
+brew "mas"
+
+# Google Cloud SDK components (if using gcloud)
+# Note: gcloud-cli is a cask, but includes command-line tools
+
+# ============================================================================
+# CURRENTLY HOMEBREW-MANAGED APPLICATIONS
+# These are already installed via Homebrew on your current system
+# ============================================================================
+
+# Security & Password Management
+cask "1password"                 # Password manager
+
+# Productivity & AI Tools
+cask "arq"                       # Backup software
+cask "claude"                    # Anthropic Claude AI assistant
+#cask "comet"                     # Git client with GPT integration
+#cask "cursor"                    # AI-powered code editor
+
+# Development Tools
+cask "devpod"                    # Development environment manager
+cask "docker"                    # Docker Desktop for Mac
+cask "drawio"                    # Diagram and flowchart software
+cask "orbstack"                  # Docker/Linux container alternative
+
+
+# Hardware & Streaming
+cask "elgato-stream-deck"        # Elgato Stream Deck software
+
+# Cloud & Infrastructure
+cask "gcloud-cli"                # Google Cloud SDK
+cask "google-drive"              # Google Drive sync client
+
+# Microsoft Suite
+cask "microsoft-auto-update"     # Microsoft AutoUpdate
+cask "microsoft-edge"            # Microsoft Edge browser
+cask "microsoft-office"          # Microsoft Office suite
+cask "microsoft-teams"           # Microsoft Teams
+
+# System Utilities
+cask "superduper"                # Disk cloning and backup
+cask "the-unarchiver"            # Archive extraction utility
+cask "timemachineeditor"         # Time Machine scheduling tool
+
+# VPN
+cask "cyberghost-vpn"            # CyberGhost VPN client
+
+# ============================================================================
+# HIGH PRIORITY - Common Development & Productivity Apps
+# These apps are heavily used and benefit from Homebrew management
+# ============================================================================
+
+# Browsers
+cask "google-chrome"             # Google Chrome web browser
+
+# Development
+cask "visual-studio-code"        # VS Code editor
+cask "iterm2"                    # Terminal emulator
+cask "warp"                      # Modern terminal with AI features
+
+# Productivity
+cask "obsidian"                  # Knowledge base and note-taking
+cask "raycast"                   # Productivity launcher (replaces Spotlight/Alfred)
+cask "zoom"                      # Video conferencing
+
+# AI & Communication
+cask "chatgpt"                   # OpenAI ChatGPT desktop app
+cask "deepl"                     # Translation app
+# REMOVED (duplicate with upstream) - cask "whatsapp"
+
+# Media
+cask "vlc"                       # VLC media player
+
+# ============================================================================
+# MEDIUM PRIORITY - Utility Applications
+# Useful utilities for system management and productivity
+# ============================================================================
+
+# System Utilities
+cask "daisydisk"                 # Disk space analyzer
+cask "hazel"                     # Automated file organization
+cask "little-snitch"             # Network monitoring and firewall (NOT INSTALLED)
+cask "betterdisplay"             # Display management
+cask "setapp"                    # App subscription service
+
+# Cloud Storage
+cask "onedrive"                  # Microsoft OneDrive sync client
+
+# Audio/Video
+cask "audio-hijack"              # Audio recording (NOT INSTALLED)
+
+# Document Management
+cask "devonthink"                # Document and knowledge management (NOT INSTALLED)
+# cask "kindle"                    # Amazon Kindle e-book reader (use Mac App Store version)
+
+# Virtualization
+# cask "parallels"                 # Parallels Desktop for Mac (NOT INSTALLED)
+
+# Hardware Support
+cask "logi-options-plus"         # Logitech Options+ for newer devices
+
+# ============================================================================
+# LOWER PRIORITY - Hardware & Vendor-Specific Tools
+# Specialized applications for specific hardware or use cases
+# ============================================================================
+
+# Display & Graphics
+# cask "displaylink"               # DisplayLink driver (NOT INSTALLED)
+
+# Hardware Control
+cask "elgato-control-center"     # Elgato device control (NOT INSTALLED)
+
+# GPS & Mapping
+cask "garmin-basecamp"           # Garmin GPS route planning (NOT INSTALLED)
+cask "garmin-express"            # Garmin device sync and updates (NOT INSTALLED)
+cask "google-earth-pro"          # Google Earth professional edition (NOT INSTALLED)
+
+# Document Processing
+# cask "abbyy-finereader-pdf"      # OCR and PDF software (NOT INSTALLED)
+
+# Security & Privacy
+# cask "adguard"                   # Ad blocking application (use Mac App Store "AdGuard Mini" instead)
+
+# ============================================================================
+# FONTS - Nerd Fonts for Terminal
+# Patched fonts with glyphs for powerline, devicons, and other symbols
+# ============================================================================
+
+# cask "font-caskaydia-cove-nerd-font"    # Cascadia Code with Nerd Font patches (NOT INSTALLED)
+# REMOVED (duplicate with upstream) - cask "font-fira-code-nerd-font"
+# cask "font-iosevka-nerd-font"           # Iosevka with Nerd Font patches (NOT INSTALLED)
+# REMOVED (duplicate with upstream) - cask "font-jetbrains-mono-nerd-font"
+# cask "font-victor-mono-nerd-font"       # Victor Mono with Nerd Font patches (NOT INSTALLED)
+
+# ============================================================================
+# MAC APP STORE APPLICATIONS (via mas)
+# Requires 'mas' CLI tool installed above
+# To find app IDs: mas search "App Name" or check App Store URL
+# ============================================================================
+
+mas "MacFamilyTree 9", id: 1458866808        # Genealogy software
+# mas "LiquidText", id: 922765270              # Document annotation and research (NOT INSTALLED)
+mas "Xcode", id: 497799835                   # Apple development environment
+mas "WhatsApp", id: 310633997                # WhatsApp messaging (installed)
+
+# German/Regional Apps (App Store)
+mas "AusweisApp", id: 948660805              # German eID application (AusweisApp Bund)
+mas "AdGuard Mini", id: 1440147259           # Ad blocker (Safari extension)
+
+# Utilities (App Store)
+mas "Consent-O-Matic", id: 1606897889        # Privacy tool for cookie consent
+mas "Health Auto Export", id: 1115567069     # Health data export to JSON/CSV
+mas "HP", id: 1474276998                     # HP printer software (HP: Druck und Support)
+mas "Kindle", id: 302584613                  # Amazon Kindle e-book reader
+mas "Perplexity", id: 6714467650             # AI search engine
+mas "Pocket", id: 568494494                  # Read-it-later service
+mas "Save to Pocket", id: 1477385213         # Safari extension for Pocket
+
+# ============================================================================
+# GERMAN/REGION-SPECIFIC SOFTWARE
+# ============================================================================
+
+cask "moneymoney"                # German banking app
+cask "receipts"                  # Receipt/document management
+
+# German Tax Software (WISO Steuer) - install the years you need
+# cask "wiso-steuer-2024"          # Tax year 2023 (NOT INSTALLED)
+cask "wiso-steuer-2025"          # Tax year 2024
+cask "wiso-steuer-2026"          # Tax year 2025 (NOT INSTALLED)
+
+# ============================================================================
+# HARDWARE-SPECIFIC SOFTWARE
+# ============================================================================
+
+cask "fujitsu-scansnap-home"     # Fujitsu ScanSnap scanner software
+cask "insta360-link-controller"  # Insta360 camera control
+cask "display-pilot"             # BenQ monitor software
+
+# ============================================================================
+# NOT AVAILABLE VIA HOMEBREW OR APP STORE - MANUAL INSTALLATION
+# ============================================================================
+
+# --- Hardware-Specific ---
+# 3Dconnexion - 3D mouse drivers (https://3dconnexion.com/de/drivers/)
+# DJI Assistant - DJI drone management software (https://www.dji.com/)
+
+# --- Setapp Applications ---
+# Apps in /Applications/Setapp/ are managed by Setapp subscription.
+# Install the 'setapp' cask above, then manage apps through the Setapp app.
+
+# ============================================================================
+# MAINTENANCE COMMANDS
+# ============================================================================
+
+# Install all applications in this file:
+#   brew bundle install --file=Brewfile.personal
+
+# Check what would be installed/upgraded:
+#   brew bundle check --file=Brewfile.personal
+
+# Cleanup (uninstall) apps not in this Brewfile:
+#   brew bundle cleanup --file=Brewfile.personal
+#   brew bundle cleanup --file=Brewfile.personal --force  # Skip confirmation
+
+# Update Homebrew and upgrade all packages:
+#   brew update && brew upgrade && brew upgrade --cask
+
+# Generate a Brewfile from currently installed packages:
+#   brew bundle dump --file=Brewfile.snapshot --force
+
+# Compare with current installations:
+#   comm -23 <(brew bundle list --file=Brewfile.personal | sort) <(brew list --formula && brew list --cask | sort)

@@ -13,6 +13,9 @@ tmux/.config/tmux/plugins
 vim/.netrwhist
 vim/bundle
 
+# Claude Code settings (local permissions and configurations)
+.claude/
+
 # Allow bin/.local/bin directory despite global *.local ignore pattern
 !bin/.local/
 !bin/.local/bin/

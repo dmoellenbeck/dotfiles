@@ -4,12 +4,58 @@ This guide provides a complete, step-by-step walkthrough for installing the dotf
 
 ## 📋 Table of Contents
 
+- [Quick Start (Work Laptop)](#-quick-start-work-laptop)
 - [Pre-Installation Checklist](#%EF%B8%8F-pre-installation-checklist)
 - [System Requirements](#%EF%B8%8F-system-requirements)
 - [Step-by-Step Installation](#-step-by-step-installation)
 - [Post-Installation Verification](#-post-installation-verification)
 - [Next Steps](#-next-steps)
 - [Common First-Time Issues](#%EF%B8%8F-common-first-time-issues)
+
+## ⚡ Quick Start (Work Laptop)
+
+**TL;DR for setting up on a new work laptop:**
+
+```bash
+# 1. Install Xcode Command Line Tools
+xcode-select --install
+
+# 2. Install Homebrew
+/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+
+# Follow Homebrew's post-install instructions to add to PATH, then:
+
+# 3. Install GNU Stow
+brew install stow
+
+# 4. Clone your dotfiles
+git clone https://github.com/dmoellenbeck/dotfiles.git ~/dotfiles
+cd ~/dotfiles
+
+# 5. Preview what will be installed
+./setup.sh --dry-run
+
+# 6. Run the setup
+./setup.sh
+
+# 7. Install all applications and tools
+cd ~/dotfiles/brew
+brew bundle install --file=Brewfile.personal
+
+# 8. Set up Zsh plugin manager (follow instructions at zapzsh.com with --keep flag)
+# Then restart terminal
+
+# 9. Configure personal Git info
+cat > ~/.gitconfig.local << 'EOF'
+[user]
+  name = Your Full Name
+  email = your.work@email.com
+EOF
+
+# 10. Restart terminal - you're done! 🎉
+```
+
+For detailed explanations of each step, continue reading below.
 
 ## 🛡️ Pre-Installation Checklist
 
@@ -46,12 +92,12 @@ brew install stow
 
 #### Optional: Run the Laptop Script
 
-For a complete development environment, consider running the [laptop script](https://github.com/joshukraine/laptop) first:
+For a complete development environment, consider running the [laptop script](https://github.com/dmoellenbeck/laptop) first:
 
 ```bash
 # Download and review the script
-curl --remote-name https://raw.githubusercontent.com/joshukraine/laptop/main/mac
-curl --remote-name https://raw.githubusercontent.com/joshukraine/dotfiles/master/laptop/.laptop.local
+curl --remote-name https://raw.githubusercontent.com/dmoellenbeck/laptop/main/mac
+curl --remote-name https://raw.githubusercontent.com/dmoellenbeck/dotfiles/master/laptop/.laptop.local
 
 # Review both scripts
 less mac
@@ -77,7 +123,7 @@ sh mac 2>&1 | tee ~/laptop.log
 
 ```bash
 # Clone to the standard location
-git clone https://github.com/joshukraine/dotfiles.git ~/dotfiles
+git clone https://github.com/dmoellenbeck/dotfiles.git ~/dotfiles
 
 # Navigate to the dotfiles directory
 cd ~/dotfiles
@@ -223,12 +269,40 @@ After successful installation, consider these additional setup tasks:
 
 ### 1. Install Homebrew Packages
 
-```bash
-# Review the Brewfile
-less ~/Brewfile
+Choose the appropriate Brewfile based on your needs:
 
-# Install all packages (this may take a while)
-brew bundle install
+#### Option A: Full Personal Setup (Recommended for Work Laptop)
+
+```bash
+# Install packages from Brewfile.personal (includes all apps and tools)
+cd ~/dotfiles/brew
+brew bundle install --file=Brewfile.personal
+
+# This installs:
+# - All development tools and utilities
+# - Productivity apps (1Password, Raycast, Obsidian, etc.)
+# - AI tools (Claude, ChatGPT, Cursor, etc.)
+# - Mac App Store apps (via mas)
+# - Personal and work-specific applications
+```
+
+#### Option B: Minimal/Base Setup
+
+```bash
+# Install only the base Brewfile (minimal setup)
+brew bundle install --file=~/dotfiles/brew/Brewfile
+
+# This installs only essential command-line tools and fonts
+```
+
+#### Post-Installation: Check What Was Installed
+
+```bash
+# See what was installed
+brew bundle list --file=~/dotfiles/brew/Brewfile.personal
+
+# Clean up apps not in the Brewfile (optional, use with caution)
+brew bundle cleanup --file=~/dotfiles/brew/Brewfile.personal --dry-run
 ```
 
 ### 2. Set Up Shell (Choose One)
@@ -355,7 +429,7 @@ If you encounter issues not covered here:
 1. **Re-run with dry-run**: `./setup.sh --dry-run` to diagnose
 2. **Check the logs**: Look for error messages in the terminal output
 3. **Review troubleshooting guide**: See [troubleshooting.md](troubleshooting.md)
-4. **File an issue**: Report problems on [GitHub](https://github.com/joshukraine/dotfiles/issues)
+4. **File an issue**: Report problems on [GitHub](https://github.com/dmoellenbeck/dotfiles/issues)
 
 ## 🎉 Success
 

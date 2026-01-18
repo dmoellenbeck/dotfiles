@@ -43,7 +43,7 @@ Make sure macOS is up to date and you have installed the [required software](#-p
 Clone this repo.
 
 ```sh
-git clone https://github.com/joshukraine/dotfiles.git ~/dotfiles
+git clone https://github.com/dmoellenbeck/dotfiles.git ~/dotfiles
 ```
 
 Read the setup script and check available options.
@@ -92,7 +92,7 @@ The dotfiles assume you are running macOS with (at minimum) the following softwa
 - [Starship][starship]
 - [`yq`][yq] (for regenerating abbreviations from shared YAML source)
 
-All of the above and more are installed with my fork of [Laptop][joshuas-laptop].
+All of the above and more are installed with [Laptop][laptop-repo].
 
 ## 🌟 New Mac Bootstrap
 
@@ -102,20 +102,20 @@ This is what I would do if I bought a new Mac computer today. The steps below as
 - Check for software updates
 - [Install Xcode Command Line Tools][install-clt]
 
-### 💻 1. Run my fork of thoughtbot’s Laptop
+### 💻 1. Run thoughtbot's Laptop
 
-&#9657; **[github.com/joshukraine/laptop][joshuas-laptop]**
+&#9657; **[github.com/dmoellenbeck/laptop][laptop-repo]**
 
 Download the `mac` script:
 
 ```sh
-curl --remote-name https://raw.githubusercontent.com/joshukraine/laptop/main/mac
+curl --remote-name https://raw.githubusercontent.com/dmoellenbeck/laptop/main/mac
 ```
 
 Download `.local.laptop` for additional customizations:
 
 ```sh
-curl --remote-name https://raw.githubusercontent.com/joshukraine/dotfiles/master/laptop/.laptop.local
+curl --remote-name https://raw.githubusercontent.com/dmoellenbeck/dotfiles/master/laptop/.laptop.local
 ```
 
 Review both scripts before proceeding:
@@ -134,13 +134,7 @@ Execute the `mac` script:
 sh mac 2>&1 | tee ~/laptop.log
 ```
 
-I’ve made the following changes to my fork of Laptop:
-
-- Install asdf via git instead of Homebrew
-- Comment out Heroku-related code
-- Comment out unused Homebrew taps and formulae
-
-It is worth noting that the Laptop script (`mac`) is idempotent and can be safely run multiple times to ensure a consistent baseline configuration.
+The Laptop script (`mac`) is idempotent and can be safely run multiple times to ensure a consistent baseline configuration.
 
 ### ⚠️ 2. Check for Stow conflicts
 
@@ -153,7 +147,7 @@ The setup script will try to detect and backup these files ahead of Stow, but it
 Clone
 
 ```sh
-git clone https://github.com/joshukraine/dotfiles.git ~/dotfiles
+git clone https://github.com/dmoellenbeck/dotfiles.git ~/dotfiles
 ```
 
 Read and preview
@@ -655,6 +649,7 @@ The `.zshrc` script can be profiled by touching the file `~/.zshrc.profiler` and
 
 ## License
 
+Based on [Joshua Steele's dotfiles](https://github.com/joshukraine/dotfiles).
 Copyright &copy; 2014–2025 Joshua Steele. [MIT License][license]
 
 [^2]: <https://sw.kovidgoyal.net/kitty/conf/#opt-kitty.symbol_map>
@@ -681,10 +676,10 @@ Copyright &copy; 2014–2025 Joshua Steele. [MIT License][license]
 [install-clt]: https://www.freecodecamp.org/news/install-xcode-command-line-tools/
 [iterm2-font-settings]: https://res.cloudinary.com/dnkvsijzu/image/upload/v1700122897/screenshots/iterm2-config_xqevqo.png
 [jetbrains-mono]: https://www.jetbrains.com/lp/mono/
-[joshuas-laptop]: https://github.com/joshukraine/laptop
+[laptop-repo]: https://github.com/dmoellenbeck/laptop
 [laptop]: https://github.com/thoughtbot/laptop
 [lazyvim]: https://www.lazyvim.org/
-[license]: https://github.com/joshukraine/dotfiles/blob/master/LICENSE
+[license]: https://github.com/dmoellenbeck/dotfiles/blob/master/LICENSE
 [lunar-vim]: https://www.lunarvim.org/
 [monaspace]: https://monaspace.githubnext.com
 [monolisa]: https://www.monolisa.dev/

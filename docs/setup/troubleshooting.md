@@ -627,7 +627,7 @@ If your issue isn't covered here:
 
 1. **Check the setup script output carefully** - error messages often point to the exact problem
 2. **Use dry-run mode** to understand what the script is trying to do: `./setup.sh --dry-run`
-3. **Search existing issues** on the [GitHub repository](https://github.com/joshukraine/dotfiles/issues)
+3. **Search existing issues** on the [GitHub repository](https://github.com/dmoellenbeck/dotfiles/issues)
 4. **Enable debug mode** for more verbose output: `DEBUG=true ./setup.sh --dry-run`
 5. **File a new issue** with:
    - Your operating system and version

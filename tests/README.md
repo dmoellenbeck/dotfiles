@@ -401,6 +401,6 @@ run-tests --coverage    # Check test coverage
 
 ## Related Issues
 
-- [Issue #71](https://github.com/joshukraine/dotfiles/issues/71) - Original testing framework request
-- [Issue #74](https://github.com/joshukraine/dotfiles/issues/74) - Function documentation (includes quality tools)
+- [Issue #71](https://github.com/dmoellenbeck/dotfiles/issues/71) - Original testing framework request
+- [Issue #74](https://github.com/dmoellenbeck/dotfiles/issues/74) - Function documentation (includes quality tools)
 - Phase 3 of dotfiles improvement plan - Long-term automation goals

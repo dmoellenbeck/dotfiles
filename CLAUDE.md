@@ -39,12 +39,18 @@ The repository is organized with each top-level directory representing a tool or
 
 **📚 For comprehensive setup guidance, see [docs/setup/](docs/setup/README.md)**
 
+**⚡ Quick Start for Work Laptop**: [Installation Guide - Quick Start Section](docs/setup/installation-guide.md#-quick-start-work-laptop)
+
 ```bash
 # Initial setup (idempotent)
 bash ~/dotfiles/setup.sh
 
-# Install Homebrew packages
-brew bundle install
+# Install ALL packages and apps (includes personal and work apps)
+cd ~/dotfiles/brew
+brew bundle install --file=Brewfile.personal
+
+# Or install only base packages
+brew bundle install --file=~/dotfiles/brew/Brewfile
 
 # Install Zap (Zsh plugin manager)
 # Follow instructions at https://www.zapzsh.com with --keep flag
@@ -53,6 +59,7 @@ brew bundle install
 **Quick references:**
 
 - **New users**: [Installation Guide](docs/setup/installation-guide.md)
+- **Work laptop setup**: [Quick Start (Work Laptop)](docs/setup/installation-guide.md#-quick-start-work-laptop)
 - **Command examples**: [Usage Examples](docs/setup/usage-examples.md)
 - **Issues**: [Troubleshooting](docs/setup/troubleshooting.md)
 - **Customization**: [Customization Guide](docs/setup/customization.md)

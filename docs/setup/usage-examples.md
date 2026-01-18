@@ -64,7 +64,7 @@ Complete setup on a brand new Mac:
 
 ```bash
 # 1. Clone the repository
-git clone https://github.com/joshukraine/dotfiles.git ~/dotfiles
+git clone https://github.com/dmoellenbeck/dotfiles.git ~/dotfiles
 cd ~/dotfiles
 
 # 2. Preview the installation
@@ -405,6 +405,6 @@ If these examples don't cover your use case:
 2. **Use dry-run**: Always preview with `--dry-run` first
 3. **Read the script**: `less ~/dotfiles/setup.sh` to understand behavior
 4. **Review other guides**: See [troubleshooting.md](troubleshooting.md) for specific issues
-5. **File an issue**: Report problems on [GitHub](https://github.com/joshukraine/dotfiles/issues)
+5. **File an issue**: Report problems on [GitHub](https://github.com/dmoellenbeck/dotfiles/issues)
 
 Remember: The setup script is designed to be idempotent - safe to run multiple times!

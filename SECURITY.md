@@ -115,7 +115,7 @@ If you discover a security vulnerability in this dotfiles repository, please rep
 
 ## Contact Information
 
-- **Repository**: [github.com/joshukraine/dotfiles](https://github.com/joshukraine/dotfiles)
+- **Repository**: [github.com/dmoellenbeck/dotfiles](https://github.com/dmoellenbeck/dotfiles)
 - **Issues**: Use GitHub issues for non-security matters
 - **Security**: Contact repository maintainer directly for security issues
 

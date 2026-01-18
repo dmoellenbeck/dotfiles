@@ -19,36 +19,36 @@
 # Communication & Collaboration
 # =============================================================================
 # Microsoft Teams - Work communication (may be managed by employer)
-cask "microsoft-teams"
+#cask "microsoft-teams"
 
 # Slack - Team messaging
-cask "slack"
+#cask "slack"
 
 # Zoom - Video conferencing
-cask "zoom"
+#cask "zoom"
 
 # =============================================================================
 # Productivity
 # =============================================================================
 # Rectangle - Window management (free, open-source)
-cask "rectangle"
+#cask "rectangle"
 
 # Raycast - Spotlight replacement with extensions
 # Alternative: alfred (already in base Brewfile)
-cask "raycast"
+#cask "raycast"
 
 # =============================================================================
 # Development Tools
 # =============================================================================
 # Visual Studio Code - Primary editor
-cask "visual-studio-code"
+#cask "visual-studio-code"
 
 # Docker - Container runtime (if allowed by IT)
 # Note: Consider OrbStack as lighter alternative
 # cask "docker"
 
 # Postman - API development and testing
-cask "postman"
+#cask "postman"
 
 # =============================================================================
 # Fonts (Development)
@@ -56,7 +56,7 @@ cask "postman"
 # Note: Some fonts already in base Brewfile
 # These are commonly used in development
 
-cask "font-inter"
+#cask "font-inter"
 
 # =============================================================================
 # Utilities

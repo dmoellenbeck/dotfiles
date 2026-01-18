@@ -17,7 +17,7 @@ Welcome to the comprehensive setup script documentation for the dotfiles reposit
 For first-time users who want to get started immediately:
 
 1. **Prerequisites**: Ensure you have macOS with [Homebrew](https://brew.sh) and [GNU Stow](https://www.gnu.org/software/stow/) installed
-2. **Clone**: `git clone https://github.com/joshukraine/dotfiles.git ~/dotfiles`
+2. **Clone**: `git clone https://github.com/dmoellenbeck/dotfiles.git ~/dotfiles`
 3. **Preview**: `~/dotfiles/setup.sh --dry-run` (see what will happen)
 4. **Install**: `~/dotfiles/setup.sh` (run the actual setup)
 
@@ -106,13 +106,13 @@ If you encounter issues not covered in these guides:
 1. **Check existing documentation** - Search through all setup guides
 2. **Review the script** - Read `setup.sh` directly for implementation details
 3. **Test with dry-run** - Use `--dry-run` to understand what will happen
-4. **File an issue** - Report problems on the [GitHub repository](https://github.com/joshukraine/dotfiles/issues)
+4. **File an issue** - Report problems on the [GitHub repository](https://github.com/dmoellenbeck/dotfiles/issues)
 
 ## ⚡ TL;DR Commands
 
 ```bash
 # Quick installation for experienced users
-git clone https://github.com/joshukraine/dotfiles.git ~/dotfiles
+git clone https://github.com/dmoellenbeck/dotfiles.git ~/dotfiles
 ~/dotfiles/setup.sh --dry-run  # Preview first!
 ~/dotfiles/setup.sh            # Install
 
