@@ -6,7 +6,7 @@ else
     eval "$(/usr/local/bin/brew shellenv)"
 fi
 
-export PATH="${ASDF_DATA_DIR:-$HOME/.asdf}/shims:$HOME/.local/bin:$HOME/.bin:$PATH"
+export PATH="/opt/homebrew/opt/trash/bin:/opt/homebrew/opt/postgresql@17/bin:${ASDF_DATA_DIR:-$HOME/.asdf}/shims:$HOME/.local/bin:$HOME/.bin:$PATH"
 
 # Shared environment variables
 source "$HOME/dotfiles/shared/environment.sh"
@@ -19,6 +19,7 @@ export GPG_TTY=$(tty)
 . "$XDG_CONFIG_HOME/zsh/plugins.zsh" # Includes Zap - https://www.zapzsh.com
 . "$XDG_CONFIG_HOME/zsh/aliases.zsh"
 . "$XDG_CONFIG_HOME/zsh/functions.zsh"
+. "$XDG_CONFIG_HOME/zsh/cc-functions.zsh"
 . "$XDG_CONFIG_HOME/zsh/colors.zsh"
 . "$XDG_CONFIG_HOME/zsh/docker.sh"
 . "$HOME/.zshrc.local"
@@ -51,7 +52,7 @@ then
 fi
 
 # Docker CLI completions
-fpath=(/Users/joshukraine/.docker/completions $fpath)
+fpath=($HOME/.docker/completions $fpath)
 
 # Load and initialise completion system with caching for performance
 autoload -Uz compinit

@@ -1,8 +1,6 @@
 #!/usr/bin/env bash
 #
 # Shared environment variables for Zsh shell
-# This file reduces duplication and ensures consistency across shells.
-# Fish uses the parallel shared/environment.fish file.
 #
 # Usage:
 #   Zsh:  source ~/dotfiles/shared/environment.sh in .zshrc
@@ -34,9 +32,6 @@ export RIPGREP_CONFIG_PATH="${HOME}/.ripgreprc"
 
 # 1Password SSH agent
 export SSH_AUTH_SOCK="${HOME}/Library/Group Containers/2BUA8C4S2C.com.1password/t/agent.sock"
-
-# Personal Knowledge Base
-export PKB_PATH="${HOME}/personal-knowledge-base"
 
 # FZF configuration
 export FZF_DEFAULT_COMMAND="rg --files --hidden --follow --no-ignore-vcs"

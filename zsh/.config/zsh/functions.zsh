@@ -1,3 +1,4 @@
+# shellcheck disable=SC2035,SC2046,SC2086,SC2155,SC2181,SC2199
 # Generate ctags for Ruby project with bundled gems
 #
 # Usage: ct
@@ -44,13 +45,13 @@ function copycwd() {
     echo "3) /Users/$(whoami)"
     read -r choice
 
-    case $choice in
+    case ${choice} in
         1)
-            pwd | sed "s|^$HOME|~|" | tr -d '\n' | pbcopy
+            pwd | sed "s|^${HOME}|~|" | tr -d '\n' | pbcopy
             echo "Current path copied to clipboard with ~ as home directory."
             ;;
         2)
-            pwd | sed "s|^$HOME|\\\$HOME|" | tr -d '\n' | pbcopy
+            pwd | sed "s|^${HOME}|\\\$HOME|" | tr -d '\n' | pbcopy
             echo "Current path copied to clipboard with \$HOME as home directory."
             ;;
         3)
@@ -73,7 +74,7 @@ function copycwd() {
 #
 # Returns: Deletes all .DS_Store files found, no output unless errors occur
 function dsx() {
-  find . -name "*.DS_Store" -type f -delete
+  find . -name ".DS_Store" -type f -delete
 }
 
 # Determine size of a file or total size of a directory
@@ -85,9 +86,9 @@ function fs() {
     local arg=-sh;
   fi
   if [[ -n "$@" ]]; then
-    du $arg -- "$@";
+    du ${arg} -- "$@";
   else
-    du $arg .[^.]* *;
+    du ${arg} .[^.]* *;
   fi;
 }
 
@@ -144,7 +145,7 @@ Examples:
     default_branch=$(git remote show origin 2>/dev/null | awk '/HEAD branch/ { print $NF }')
   fi
 
-  if [[ -z "$default_branch" ]]; then
+  if [[ -z "${default_branch}" ]]; then
     if git show-ref --quiet refs/heads/main; then
       default_branch="main"
     elif git show-ref --quiet refs/heads/master; then
@@ -155,14 +156,14 @@ Examples:
     fi
   fi
 
-  echo "Switching to $default_branch"
-  git checkout "$default_branch"
+  echo "Switching to ${default_branch}"
+  git switch "${default_branch}"
   if [[ $? -ne 0 ]]; then
-    echo "Failed to checkout $default_branch"
+    echo "Failed to switch to ${default_branch}"
     return 1
   fi
 
-  if [[ $do_pull -eq 1 ]]; then
+  if [[ ${do_pull} -eq 1 ]]; then
     echo "Pulling latest changes..."
     git pull
     if [[ $? -ne 0 ]]; then
@@ -182,20 +183,7 @@ Examples:
 #
 # Returns: Numbered list of all directories in the PATH environment variable
 function path() {
-  echo $PATH | tr ":" "\n" | nl
-}
-
-# Reload Zsh shell configuration
-#
-# Usage: src
-# Arguments: None
-#
-# Examples:
-#   src                     # Reload Zsh configuration files
-#
-# Returns: Sources .zshrc and reloads all configuration
-function src() {
-  source ~/.zshrc
+  echo "${PATH}" | tr ":" "\n" | nl
 }
 
 # Ping utility with sensible defaults (Zsh version - fixed target)
@@ -207,7 +195,7 @@ function src() {
 #   pi                      # Ping Cloudflare DNS (1.1.1.1) 5 times
 #
 # Returns: Ping results with audible alerts and count limit (5 pings)
-# Note: This Zsh version always pings 1.1.1.1 (unlike Fish version which accepts arguments)
+# Note: Always pings 1.1.1.1
 function pi() {
   ping -Anc 5 1.1.1.1
 }
@@ -224,70 +212,12 @@ function pi() {
 function rlv() {
   asdf list all ruby | rg '^\d'
 }
-
-# https://github.com/robbyrussell/oh-my-zsh/blob/master/plugins/rails/rails.plugin.zsh
-# function _rails_command () {
-#   if [ -e "bin/rails" ]; then
-#     bin/rails $@
-#   else
-#     command rails $@
-#   fi
-# }
-
-# https://github.com/robbyrussell/oh-my-zsh/blob/master/plugins/rails/rails.plugin.zsh
-# function _rake_command () {
-#   if [ -e "bin/rake" ]; then
-#     bin/rake $@
-#   elif type bundle &> /dev/null && [ -e "Gemfile" ]; then
-#     bundle exec rake $@
-#   else
-#     command rake $@
-#   fi
-# }
-
-# function _rspec_command () {
-#   if [ -e "bin/rspec" ]; then
-#     bin/rspec $@
-#   elif type bundle &> /dev/null && [ -e "Gemfile" ]; then
-#     bundle exec rspec $@
-#   else
-#     command rspec $@
-#   fi
-# }
-
-# function _spring_command () {
-#   if [ -e "bin/spring" ]; then
-#     bin/spring $@
-#   elif type bundle &> /dev/null && [ -e "Gemfile" ]; then
-#     bundle exec spring $@
-#   else
-#     command spring $@
-#   fi
-# }
-
-# function _mina_command () {
-#   if [ -e "bin/mina" ]; then
-#     bin/mina $@
-#   elif type bundle &> /dev/null && [ -e "Gemfile" ]; then
-#     bundle exec mina $@
-#   else
-#     command mina $@
-#   fi
-# }
-
-# function n_test_runs() {
-#   for (( n=0; n<$1; n++ ));
-#   do { time bundle exec rspec ./spec; } 2>> time.txt;
-#   done
-# }
-
-# Push current branch to origin with upstream tracking (smart default branch detection)
+# Push current branch to origin with upstream tracking
 function gpum() {
   # Help message
   if [[ "$1" == "-h" || "$1" == "--help" ]]; then
   printf "%s\n" "Usage: gpum [OPTION]
-Push current branch to origin with upstream tracking to the default branch.
-Intelligently detects whether to use 'main' or 'master' as the default branch.
+Push current branch to origin with upstream tracking.
 
 Options:
   -h, --help  Show this help message
@@ -305,7 +235,7 @@ Examples:
 
   # Get current branch
   local current_branch=$(git branch --show-current)
-  if [[ -z "$current_branch" ]]; then
+  if [[ -z "${current_branch}" ]]; then
     echo "Could not determine current branch."
     return 1
   fi
@@ -316,32 +246,14 @@ Examples:
     return 1
   fi
 
-  # Determine default branch
-  local default_branch=""
-
-  # Try to get default branch from remote
-  default_branch=$(git remote show origin 2>/dev/null | awk '/HEAD branch/ { print $NF }')
-
-  # Fallback if needed
-  if [[ -z "$default_branch" ]]; then
-    if git show-ref --quiet refs/heads/main; then
-      default_branch="main"
-    elif git show-ref --quiet refs/heads/master; then
-      default_branch="master"
-    else
-      echo "Could not determine default branch."
-      return 1
-    fi
-  fi
-
-  echo "Pushing $current_branch to origin with upstream tracking..."
-  git push -u origin "$current_branch"
+  echo "Pushing ${current_branch} to origin with upstream tracking..."
+  git push -u origin "${current_branch}"
   if [[ $? -ne 0 ]]; then
     echo "Failed to push to origin."
     return 1
   fi
 
-  echo "Successfully pushed $current_branch to origin (default branch: $default_branch)"
+  echo "Successfully pushed ${current_branch} to origin"
 }
 
 # Rebase current branch against default branch (smart branch detection)
@@ -368,7 +280,7 @@ Examples:
 
   # Get current branch
   local current_branch=$(git branch --show-current)
-  if [[ -z "$current_branch" ]]; then
+  if [[ -z "${current_branch}" ]]; then
     echo "Could not determine current branch."
     return 1
   fi
@@ -378,26 +290,28 @@ Examples:
     return 1
   fi
 
-  # Check if remote exists and fetch
-  if git remote | grep -q "^origin$"; then
-    echo "Fetching latest from origin..."
-    git fetch origin > /dev/null 2>&1
-    if [[ $? -ne 0 ]]; then
-      echo "Failed to fetch from origin."
-      return 1
-    fi
+  # Check if remote exists
+  if ! git remote | grep -q "^origin$"; then
+    echo "No 'origin' remote found."
+    return 1
+  fi
+
+  # Fetch latest from origin
+  echo "Fetching latest from origin..."
+  git fetch origin > /dev/null 2>&1
+  if [[ $? -ne 0 ]]; then
+    echo "Failed to fetch from origin."
+    return 1
   fi
 
   # Determine default branch
   local default_branch=""
 
   # Try to get default branch from remote
-  if git remote | grep -q "^origin$"; then
-    default_branch=$(git remote show origin 2>/dev/null | awk '/HEAD branch/ { print $NF }')
-  fi
+  default_branch=$(git remote show origin 2>/dev/null | awk '/HEAD branch/ { print $NF }')
 
   # Fallback if needed
-  if [[ -z "$default_branch" ]]; then
+  if [[ -z "${default_branch}" ]]; then
     if git show-ref --quiet refs/heads/main; then
       default_branch="main"
     elif git show-ref --quiet refs/heads/master; then
@@ -409,80 +323,19 @@ Examples:
   fi
 
   # Don't rebase if we're already on the default branch
-  if [[ "$current_branch" == "$default_branch" ]]; then
-    echo "Already on default branch ($default_branch). Nothing to rebase."
+  if [[ "${current_branch}" == "${default_branch}" ]]; then
+    echo "Already on default branch (${default_branch}). Nothing to rebase."
     return 0
   fi
 
-  echo "Rebasing $current_branch against $default_branch..."
-  git rebase "origin/$default_branch"
+  echo "Rebasing ${current_branch} against ${default_branch}..."
+  git rebase "origin/${default_branch}"
   if [[ $? -ne 0 ]]; then
     echo "Rebase failed. You may need to resolve conflicts manually."
     return 1
   fi
 
-  echo "Successfully rebased $current_branch against $default_branch"
-}
-
-# Regenerate abbreviations for all shells from shared YAML source
-function reload-abbr() {
-  # Help message
-  if [[ "$1" == "-h" || "$1" == "--help" ]]; then
-    printf "%s\n" "Usage: reload-abbr [OPTION]
-Regenerate abbreviations for all shells from shared YAML source.
-This command can be run from any directory.
-
-Options:
-  -h, --help  Show this help message
-
-Examples:
-  reload-abbr  # Regenerate all abbreviations from shared/abbreviations.yaml"
-    return 0
-  fi
-
-  # Find the dotfiles directory
-  local dotfiles_dir="$HOME/dotfiles"
-  if [[ ! -d "$dotfiles_dir" ]]; then
-    echo "❌ Error: Dotfiles directory not found at $dotfiles_dir"
-    return 1
-  fi
-
-  # Check if the generation script exists
-  local generate_script="$dotfiles_dir/shared/generate-all-abbr.sh"
-  if [[ ! -f "$generate_script" ]]; then
-    echo "❌ Error: Generation script not found at $generate_script"
-    return 1
-  fi
-
-  # Check if script is executable
-  if [[ ! -x "$generate_script" ]]; then
-    echo "❌ Error: Generation script is not executable: $generate_script"
-    echo "Run: chmod +x $generate_script"
-    return 1
-  fi
-
-  # Check if documentation generator exists
-  local doc_generate_script="$dotfiles_dir/shared/generate-abbreviations-doc.sh"
-
-  # Run the generation script
-  echo "🔄 Regenerating abbreviations from any directory..."
-  "$generate_script"
-  local exit_code=$?
-
-  # Also regenerate documentation if generator exists and abbreviations succeeded
-  if [[ $exit_code -eq 0 && -f "$doc_generate_script" && -x "$doc_generate_script" ]]; then
-    echo "📝 Regenerating abbreviations documentation..."
-    "$doc_generate_script"
-  fi
-
-  if [[ $exit_code -eq 0 ]]; then
-    echo
-    echo "💡 Don't forget to reload your shell to use the new abbreviations:"
-    echo "   Fish: exec fish"
-    echo "   Zsh:  src"
-  fi
-
-  return $exit_code
+  echo "Successfully rebased ${current_branch} against ${default_branch}"
 }
 
 # Git log with detailed graph formatting and color highlighting
@@ -602,37 +455,4 @@ function haf() {
 function saf() {
   defaults write com.apple.finder AppleShowAllFiles TRUE
   killall Finder
-}
-
-# Quick navigation to Personal Knowledge Base
-#
-# Usage: cdkb
-# Arguments: None
-#
-# Examples:
-#   cdkb                    # Navigate to knowledge base root and show recent files
-#
-# Returns: Changes to knowledge base directory and shows search tip plus recent files
-function cdkb() {
-    local kb_path="${PKB_PATH:-${HOME}/personal-knowledge-base}"
-
-    if [[ ! -d "${kb_path}" ]]; then
-        echo "Knowledge base not found at: ${kb_path}"
-        echo "Ensure PKB_PATH is set and directory exists"
-        echo "Create with: mkdir -p ~/personal-knowledge-base"
-        return 1
-    fi
-
-    cd "${kb_path}" || return 1
-    echo "📚 Knowledge Base: $(pwd)"
-    echo ""
-    echo "💡 Search: rg 'search term' --type md"
-    echo ""
-    echo "Recent additions:"
-    find . -name "*.md" -not -path "./.*" -type f -print0 | \
-        xargs -0 ls -t | head -5 | \
-        sed 's|^\./||' | \
-        while read -r file; do
-            echo "  ${file}"
-        done
 }
