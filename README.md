@@ -7,7 +7,7 @@
 - [Neovim][neovim] editor configured with [LazyVim][lazyvim]💤
 - [Starship][starship] prompt
 - [Zsh][zsh] shell with [zsh-abbr][zsh-abbr] for abbreviations
-- Flexible, terminal-based dev environment with [ghostty][ghostty] 👻 + [Tmux][tmux]!
+- Flexible, terminal-based dev environment with [iTerm2][iterm2] + [Warp][warp] + [Tmux][tmux]!
 - [Claude Code][claude-code] with custom commands, permission presets, and safety hooks
 - Fast, idempotent setup with [GNU Stow][gnu-stow]
 - New Mac bootstrap based on thoughtbot's [Laptop][laptop]
@@ -78,7 +78,7 @@ Download the `mac` script:
 curl --remote-name https://raw.githubusercontent.com/dmoellenbeck/laptop/main/mac
 ```
 
-Download `.local.laptop` for additional customizations:
+Download `.laptop.local` for additional customizations:
 
 ```sh
 curl --remote-name https://raw.githubusercontent.com/dmoellenbeck/dotfiles/master/laptop/.laptop.local
@@ -155,10 +155,10 @@ Install base packages and machine-specific packages automatically:
 ~/dotfiles/setup.sh --brew
 ```
 
-Or manually:
+Or manually (after stow has created the `~/Brewfile` symlink):
 
 ```sh
-brew bundle install --file=~/Brewfile
+brew bundle install --file=~/dotfiles/brew/Brewfile
 brew bundle install --file=~/dotfiles/brew/Brewfile.macbook-personal  # or Brewfile.macmini
 ```
 
@@ -362,19 +362,11 @@ $ brew install --cask font-fira-code
 $ brew install --cask font-fira-code-nerd-font
 ```
 
-Patching fonts with icons still works fine of course, and is, I think, pretty widely used. However, during my exploration of kitty, I discovered that [there is a different (better?) approach](https://sw.kovidgoyal.net/kitty/faq/#kitty-is-not-able-to-use-my-favorite-font) to icon fonts. It turns out, you don't need a patched version of your chosen mono-spaced font. You can get most if not all the icons you need and use them alongside _any_ font by just installing the `Symbols Nerd Font Mono` font.
+Patching fonts with icons still works fine of course, and is, I think, pretty widely used. However, there is a cleaner approach: install the `Symbols Nerd Font Mono` font alongside your regular mono-spaced font. This way you get all the icons without needing patched font variants.
 
-Leveraging this approach depends on your terminal. In iTerm2, for example, you need to check "Use a different font for non-ASCII text" in the Preferences panel. Then select `Symbols Nerd Font Mono` font under "Non-ASCII font". (see screenshot below)
+In iTerm2, check "Use a different font for non-ASCII text" in the Preferences panel, then select `Symbols Nerd Font Mono` under "Non-ASCII font". In Warp, Nerd Font symbols are supported natively.
 
-![iterm2-font-settings][iterm2-font-settings]
-
-kitty does things a little differently. If you install a patched font, it will mostly work. Mostly. But the "kitty way" can be broken down in three steps:
-
-1. Install a normal, un-patched mono-spaced font, such as `Cascadia Code`
-2. Install a dedicated icon font, such as `Symbols Nerd Font Mono`
-3. Create a set of Unicode symbol maps[^2] to tell kitty which font to use for which icons (symbols)
-
-More work up front, maybe, but less guesswork in the long-term once you understand what's going on. And if you're using my dotfiles, you have it easy. **All the fonts you need are installed in `Brewfile`, and I have a set of Unicode symbol maps ready to go.** 😎
+**All the fonts you need are installed via `Brewfile`.**
 
 > [!NOTE]
 > To learn more about Nerd fonts in terminals, as well as Unicode symbol maps and all the rest, be sure to check out [Effective Nerd Fonts in Multiple Terminals](https://youtu.be/mQdB_kHyZn8?si=1mY6_oXEE8hr8lAp&t=289) by [Elijah Manor](https://www.youtube.com/@ElijahManor)
@@ -469,7 +461,7 @@ Local customizations should be placed in `*.local` files:
 Based on [Joshua Steele's dotfiles](https://github.com/joshukraine/dotfiles).
 Copyright &copy; 2014–2026 Joshua Steele. [MIT License][license]
 
-[^2]: <https://sw.kovidgoyal.net/kitty/conf/#opt-kitty.symbol_map>
+[^2]: <https://www.nerdfonts.com/cheat-sheet>
 
 [1p-cli-ssh]: https://developer.1password.com/docs/ssh
 [1p-cli-start]: https://developer.1password.com/docs/cli/get-started
@@ -485,7 +477,8 @@ Copyright &copy; 2014–2026 Joshua Steele. [MIT License][license]
 [fira-code]: https://github.com/tonsky/FiraCode
 [fish]: https://fishshell.com/
 [folke]: https://github.com/folke
-[ghostty]: https://ghostty.org/
+[iterm2]: https://iterm2.com/
+[warp]: https://www.warp.dev/
 [git]: https://git-scm.com/
 [gnu-stow]: https://www.gnu.org/software/stow/
 [hack]: https://sourcefoundry.org/hack

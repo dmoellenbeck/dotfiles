@@ -12,6 +12,7 @@ set -e # Terminate script if anything exits with a non-zero value
 #
 # Options:
 #   --dry-run    Show what would be done without making any changes
+#   --brew       Also install Homebrew packages (base + machine-specific)
 #   --help       Show this help message
 ################################################################################
 

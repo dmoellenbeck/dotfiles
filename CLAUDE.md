@@ -125,7 +125,7 @@ Some directories contain repository infrastructure and should not be symlinked t
 - `shared/environment.sh` - Shared environment variables
 - `zsh/.config/zsh-abbr/abbreviations.zsh` - Zsh abbreviations
 - `nvim/.config/nvim/lua/config/lazy.lua` - LazyVim configuration entry point
-- `local/` - Contains example local configuration files for customization
+- `defaults/` - macOS system defaults (applied via `macos-defaults apply`)
 
 ## Abbreviations
 
