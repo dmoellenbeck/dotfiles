@@ -42,9 +42,9 @@ fancy_echo "Installing latest Python ..."
 add_or_update_asdf_plugin "python" "https://github.com/asdf-community/asdf-python.git"
 install_asdf_language "python"
 
-fancy_echo "Installing latest Lua ..."
+fancy_echo "Installing Lua 5.4.7 (5.5 is incompatible with LuaRocks) ..."
 add_or_update_asdf_plugin "lua" "https://github.com/Stratus3D/asdf-lua.git"
-install_asdf_language "lua"
+install_asdf_language "lua" "5.4.7"
 
 fancy_echo "Installing basic gems..."
 gem install overcommit
