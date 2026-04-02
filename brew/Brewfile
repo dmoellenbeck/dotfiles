@@ -16,6 +16,7 @@
 # Taps
 # =============================================================================
 tap "batchcorp/public"
+tap "dsully/tap"
 tap "olets/tap"
 tap "teamookla/speedtest"
 
@@ -131,7 +132,7 @@ brew "btop"
 brew "pstree"
 brew "mas"
 brew "trash"
-brew "macos-defaults"
+brew "dsully/tap/macos-defaults"
 brew "stow"
 brew "topgrade"
 
