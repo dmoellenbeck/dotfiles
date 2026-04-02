@@ -32,7 +32,7 @@ brew "wget"
 brew "yamllint"
 brew "yq"
 brew "zoxide"
-brew "zsh-abbr"
+brew "olets/tap/zsh-abbr"
 
 cask "font-cascadia-code-nf"
 cask "iterm2"
