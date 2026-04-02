@@ -1,7 +1,1 @@
-gulp-cli
-http-server
-live-server
-neovim
-pug
-stylelint
-typescript
+@anthropic-ai/claude-code
