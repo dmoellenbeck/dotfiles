@@ -35,6 +35,7 @@ brew "zoxide"
 brew "zsh-abbr"
 
 cask "font-cascadia-code-nf"
+cask "iterm2"
 EOF
 
 fancy_echo "Installing latest Python ..."
