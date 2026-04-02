@@ -4,7 +4,7 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 ## About This Repository
 
-This is a personal dotfiles repository for macOS using GNU Stow for symlink management. It provides a comprehensive development environment configuration including Zsh shell setup, terminal configurations (ghostty/kitty), and Neovim with LazyVim distribution.
+This is a personal dotfiles repository for macOS using GNU Stow for symlink management. It provides a comprehensive development environment configuration including Zsh shell setup, terminal configurations (Warp/iTerm2), and Neovim with LazyVim distribution.
 
 ## Repository Structure
 
@@ -15,9 +15,7 @@ The repository is organized with each top-level directory representing a tool or
 - `bin/` - Custom shell scripts and utilities
 - `brew/` - Homebrew Brewfiles for package management (base + machine-specific)
 - `claude/` - Claude AI assistant configuration
-- `ghostty/` - Ghostty terminal emulator configuration
 - `git/` - Git configuration and global gitignore
-- `kitty/` - Kitty terminal emulator configuration
 - `laptop/` - Laptop setup scripts and configuration
 - `lazygit/` - Lazygit terminal UI configuration
 - `markdown/` - Markdown-related configuration
@@ -40,13 +38,6 @@ The repository is organized with each top-level directory representing a tool or
 # Initial setup (idempotent)
 bash ~/dotfiles/setup.sh
 
-# Install ALL packages and apps (includes personal and work apps)
-cd ~/dotfiles/brew
-brew bundle install --file=Brewfile.personal
-
-# Or install only base packages
-brew bundle install --file=~/dotfiles/brew/Brewfile
-
 # Setup + install Homebrew packages (base + machine-specific)
 bash ~/dotfiles/setup.sh --brew
 
@@ -56,7 +47,6 @@ bash ~/dotfiles/setup.sh --dry-run --brew
 # Install machine-specific packages manually
 cd ~/dotfiles/brew
 brew bundle install --file=Brewfile.macbook-personal  # personal MacBook
-brew bundle install --file=Brewfile.macbook-work      # work MacBook
 brew bundle install --file=Brewfile.macmini           # Mac Mini
 
 # Install Zap (Zsh plugin manager)
@@ -113,17 +103,16 @@ Some directories contain repository infrastructure and should not be symlinked t
 
 ### Terminal Environment
 
-- Primary terminal: ghostty (GPU-accelerated, modern terminal)
-- Alternative: kitty (also GPU-accelerated with native split support)
+- Primary terminal: Warp (modern terminal with AI features)
+- Alternative: iTerm2
 - Font setup includes Nerd Font symbols for icons without patched fonts
 - Tmux installed and configured by default for terminal multiplexing
 
 ## Important Files
 
 - `setup.sh` - Main installation script (`--brew` flag installs Homebrew packages)
-- `brew/Brewfile` - Homebrew package definitions
+- `brew/Brewfile` - Base Homebrew packages (all Macs)
 - `brew/Brewfile.macbook-personal` - Personal MacBook packages
-- `brew/Brewfile.macbook-work` - Work MacBook packages
 - `brew/Brewfile.macmini` - Mac Mini packages
 - `scripts/detect-machine-type.sh` - Machine type detection for Brewfile selection
 - `shared/environment.sh` - Shared environment variables

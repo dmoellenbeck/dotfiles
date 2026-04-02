@@ -260,8 +260,6 @@ handle_stow_conflicts() {
     ".claude/presets"
     ".claude/settings.json"
     ".claude/starship.toml"
-    ".config/ghostty"
-    ".config/kitty"
     ".config/lazygit"
     ".config/nvim"
     ".config/starship.toml"
