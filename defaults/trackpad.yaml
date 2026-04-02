@@ -1,0 +1,28 @@
+# Trackpad Defaults
+#
+# Usage:
+#   macos-defaults apply defaults/trackpad.yaml
+---
+description: Trackpad preferences
+sudo: false
+current_host: false
+data:
+  com.apple.AppleMultitouchTrackpad:
+    # Tap to click
+    Clicking: 1
+    # Right-click (two-finger click)
+    TrackpadRightClick: true
+    # Pinch to zoom
+    TrackpadPinch: 1
+    # Rotation gesture
+    TrackpadRotate: 1
+    # Horizontal scrolling
+    TrackpadHorizScroll: 1
+    # Momentum scrolling
+    TrackpadMomentumScroll: true
+    # Four-finger horizontal swipe (switch spaces)
+    TrackpadFourFingerHorizSwipeGesture: 2
+    # Four-finger vertical swipe (mission control)
+    TrackpadFourFingerVertSwipeGesture: 2
+    # Four-finger pinch (launchpad)
+    TrackpadFourFingerPinchGesture: 2

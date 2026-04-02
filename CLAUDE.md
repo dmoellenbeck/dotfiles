@@ -15,6 +15,7 @@ The repository is organized with each top-level directory representing a tool or
 - `bin/` - Custom shell scripts and utilities
 - `brew/` - Homebrew Brewfiles for package management (base + machine-specific)
 - `claude/` - Claude AI assistant configuration
+- `defaults/` - macOS system defaults (YAML for `macos-defaults apply`)
 - `git/` - Git configuration and global gitignore
 - `laptop/` - Laptop setup scripts and configuration
 - `lazygit/` - Lazygit terminal UI configuration
@@ -48,6 +49,10 @@ bash ~/dotfiles/setup.sh --dry-run --brew
 cd ~/dotfiles/brew
 brew bundle install --file=Brewfile.macbook-personal  # personal MacBook
 brew bundle install --file=Brewfile.macmini           # Mac Mini
+
+# Apply macOS system defaults
+for f in defaults/*.yaml; do macos-defaults apply "$f"; done
+sudo bash defaults/power.sh
 
 # Install Zap (Zsh plugin manager)
 # Follow instructions at https://www.zapzsh.com with --keep flag
@@ -115,6 +120,8 @@ Some directories contain repository infrastructure and should not be symlinked t
 - `brew/Brewfile.macbook-personal` - Personal MacBook packages
 - `brew/Brewfile.macmini` - Mac Mini packages
 - `scripts/detect-machine-type.sh` - Machine type detection for Brewfile selection
+- `defaults/*.yaml` - macOS system defaults (applied via `macos-defaults apply`)
+- `defaults/power.sh` - Power management settings (requires sudo)
 - `shared/environment.sh` - Shared environment variables
 - `zsh/.config/zsh-abbr/abbreviations.zsh` - Zsh abbreviations
 - `nvim/.config/nvim/lua/config/lazy.lua` - LazyVim configuration entry point

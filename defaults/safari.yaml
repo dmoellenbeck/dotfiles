@@ -1,0 +1,37 @@
+# Safari Defaults
+#
+# Usage:
+#   macos-defaults apply defaults/safari.yaml
+---
+description: Safari preferences
+sudo: false
+current_host: false
+data:
+  com.apple.Safari:
+    # Show full URL in address bar
+    ShowFullURLInSmartSearchField: true
+
+    # Enable Develop menu and Web Inspector
+    IncludeDevelopMenu: true
+    WebKitDeveloperExtrasEnabledPreferenceKey: true
+
+    # Privacy
+    SuppressSearchSuggestions: true
+    UniversalSearchEnabled: false
+    SendDoNotTrackHTTPHeader: true
+
+    # Don't auto-open safe downloads
+    AutoOpenSafeDownloads: false
+
+    # Blank home page
+    HomePage: "about:blank"
+
+    # Search: "contains" instead of "starts with"
+    FindOnPageMatchesWordStartsOnly: false
+
+    # Auto-update extensions
+    InstallExtensionUpdatesAutomatically: true
+
+    # Tab key highlights links
+    WebKitTabToLinksPreferenceKey: true
+    com.apple.Safari.ContentPageGroupIdentifier.WebKit2TabsToLinks: true

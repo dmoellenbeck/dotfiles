@@ -132,6 +132,7 @@ brew "btop"
 brew "pstree"
 brew "mas"
 brew "trash"
+brew "macos-defaults"
 brew "stow"
 brew "topgrade"
 

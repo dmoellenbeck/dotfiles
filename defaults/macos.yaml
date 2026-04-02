@@ -1,0 +1,58 @@
+# macOS Global Defaults
+#
+# System-wide preferences for all Macs.
+#
+# Usage:
+#   macos-defaults apply defaults/macos.yaml
+#
+# Reference:
+#   https://github.com/dsully/macos-defaults
+#   https://macos-defaults.com
+---
+description: Global macOS preferences
+sudo: false
+current_host: false
+data:
+  NSGlobalDomain:
+    # --- Save & Print Dialogs ---
+    NSNavPanelExpandedStateForSaveMode: true
+    NSNavPanelExpandedStateForSaveMode2: true
+    PMPrintingExpandedStateForPrint: true
+    PMPrintingExpandedStateForPrint2: true
+
+    # Save to disk (not iCloud) by default
+    NSDocumentSaveNewDocumentsToCloud: false
+
+    # --- Text Input ---
+    NSAutomaticCapitalizationEnabled: false
+    NSAutomaticSpellingCorrectionEnabled: false
+    NSAutomaticPeriodSubstitutionEnabled: false
+    NSAutomaticDashSubstitutionEnabled: false
+    NSAutomaticQuoteSubstitutionEnabled: false
+
+    # --- Keyboard ---
+    # Full keyboard access for all controls (Tab in dialogs)
+    AppleKeyboardUIMode: 3
+    # Key repeat rate (2 = fast, 1 = fastest)
+    KeyRepeat: 2
+    InitialKeyRepeat: 15
+
+    # --- Display ---
+    AppleShowAllExtensions: true
+    AppleScrollerPagingBehavior: 1
+    AppleWindowTabbingMode: always
+
+    # --- Spring Loading (drag-drop into folders) ---
+    com.apple.springing.enabled: true
+    com.apple.springing.delay: 0.0
+
+    # --- Trackpad ---
+    com.apple.mouse.tapBehavior: 1
+
+    # --- Locale (German) ---
+    AppleLocale: "de_DE@currency=EUR"
+    AppleMeasurementUnits: Centimeters
+    AppleMetricUnits: true
+
+    # --- Disable auto-termination of inactive apps ---
+    NSDisableAutomaticTermination: true

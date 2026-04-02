@@ -1,0 +1,19 @@
+# Screenshot Defaults
+#
+# Usage:
+#   macos-defaults apply defaults/screencapture.yaml
+---
+description: Screenshot preferences
+sudo: false
+current_host: false
+data:
+  com.apple.screencapture:
+    disable-shadow: true
+    type: png
+    style: selection
+    target: clipboard
+
+  com.apple.screensaver:
+    # Require password immediately after sleep/screensaver
+    askForPassword: 1
+    askForPasswordDelay: 0

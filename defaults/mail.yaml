@@ -1,0 +1,19 @@
+# Mail Defaults
+#
+# Usage:
+#   macos-defaults apply defaults/mail.yaml
+---
+description: Mail preferences
+sudo: false
+current_host: false
+data:
+  com.apple.mail:
+    # Disable animations
+    DisableReplyAnimations: true
+    DisableSendAnimations: true
+
+    # Copy email address without name
+    AddressesIncludeNameOnPasteboard: false
+
+    # Show attachments as icons (not inline)
+    DisableInlineAttachmentViewing: true

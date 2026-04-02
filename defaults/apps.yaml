@@ -1,0 +1,55 @@
+# App-specific Defaults
+#
+# Usage:
+#   macos-defaults apply defaults/apps.yaml
+---
+description: Application preferences
+sudo: false
+current_host: false
+data:
+  # --- Activity Monitor ---
+  com.apple.ActivityMonitor:
+    OpenMainWindow: true
+    IconType: 5
+    ShowCategory: 0
+    SortColumn: CPUUsage
+    SortDirection: 0
+
+  # --- TextEdit ---
+  com.apple.TextEdit:
+    RichText: 0
+    PlainTextEncoding: 4
+    PlainTextEncodingForWrite: 4
+
+  # --- Terminal ---
+  com.apple.Terminal:
+    StringEncodings:
+      - 4
+    SecureKeyboardEntry: true
+    ShowLineMarks: 0
+
+  # --- Time Machine ---
+  com.apple.TimeMachine:
+    DoNotOfferNewDisksForBackup: true
+
+  # --- Mac App Store ---
+  com.apple.SoftwareUpdate:
+    AutomaticCheckEnabled: true
+    ScheduleFrequency: 1
+    AutomaticDownload: 1
+    CriticalUpdateInstall: 1
+
+  com.apple.commerce:
+    AutoUpdate: true
+
+  # --- Photos: don't auto-open ---
+  com.apple.ImageCapture:
+    disableHotPlug: true
+
+  # --- Chrome: disable swipe navigation ---
+  com.google.Chrome:
+    AppleEnableSwipeNavigateWithScrolls: false
+
+  # --- iTerm2: no quit prompt ---
+  com.googlecode.iterm2:
+    PromptOnQuit: false

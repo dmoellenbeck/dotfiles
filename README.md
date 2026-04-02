@@ -149,19 +149,31 @@ If you do encounter Stow conflicts, resolve these and run setup again. The scrip
 
 ### 🍺 5. Install remaining Homebrew packages
 
-Review the included `Brewfile` and make desired adjustments.
+Install base packages and machine-specific packages automatically:
 
 ```sh
-less ~/Brewfile
+~/dotfiles/setup.sh --brew
 ```
 
-Install the bundle.
+Or manually:
 
 ```sh
-brew bundle install
+brew bundle install --file=~/Brewfile
+brew bundle install --file=~/dotfiles/brew/Brewfile.macbook-personal  # or Brewfile.macmini
 ```
 
-### 🛠️ 6. Complete post-install tasks
+### 🖥️ 6. Apply macOS system defaults
+
+Curated macOS preferences (Finder, Dock, Safari, keyboard, trackpad, etc.) using [macos-defaults][macos-defaults]:
+
+```sh
+for f in ~/dotfiles/defaults/*.yaml; do macos-defaults apply "$f"; done
+sudo bash ~/dotfiles/defaults/power.sh
+```
+
+Some changes require a logout or reboot to take effect. You can also run `killall Dock && killall Finder` to apply Dock and Finder changes immediately.
+
+### 🛠️ 7. Complete post-install tasks
 
 - [ ] Launch LazyVim (`nvim`) and run [`:checkhealth`][checkhealth]. Resolve errors and warnings. Plugins should install automatically on first launch.
 - [ ] Add personal data as needed to `*.local` files such as `~/.gitconfig.local`, `~/.laptop.local`.
@@ -487,6 +499,7 @@ Copyright &copy; 2014–2026 Joshua Steele. [MIT License][license]
 [laptop]: https://github.com/thoughtbot/laptop
 [lazyvim]: https://www.lazyvim.org/
 [license]: https://github.com/dmoellenbeck/dotfiles/blob/master/LICENSE
+[macos-defaults]: https://github.com/dsully/macos-defaults
 [lunar-vim]: https://www.lunarvim.org/
 [monaspace]: https://monaspace.githubnext.com
 [monolisa]: https://www.monolisa.dev/

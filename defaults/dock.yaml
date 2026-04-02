@@ -1,0 +1,50 @@
+# Dock Defaults
+#
+# Usage:
+#   macos-defaults apply defaults/dock.yaml
+#   killall Dock
+---
+description: Dock preferences
+sudo: false
+current_host: false
+data:
+  com.apple.dock:
+    # --- Size & Appearance ---
+    tilesize: 60.0
+    magnification: true
+    largesize: 32.0
+
+    # --- Animations ---
+    launchanim: false
+    mineffect: scale
+
+    # --- Behavior ---
+    minimize-to-application: true
+    mru-spaces: false
+    show-recents: false
+    show-process-indicators: true
+    showhidden: true
+
+    # --- Spring loading for all Dock items ---
+    enable-spring-load-actions-on-all-items: true
+
+    # --- Stack hover highlight ---
+    mouse-over-hilite-stack: true
+
+    # --- Mission Control ---
+    expose-animation-duration: 0.1
+    expose-group-by-app: false
+
+    # --- Hot Corners ---
+    # Top-left: Mission Control (2)
+    wvous-tl-corner: 2
+    wvous-tl-modifier: 0
+    # Top-right: Desktop (4)
+    wvous-tr-corner: 4
+    wvous-tr-modifier: 0
+    # Bottom-left: disabled (0)
+    wvous-bl-corner: 0
+    wvous-bl-modifier: 0
+    # Bottom-right: Screen Saver (5)
+    wvous-br-corner: 5
+    wvous-br-modifier: 0

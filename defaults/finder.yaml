@@ -1,0 +1,47 @@
+# Finder Defaults
+#
+# Usage:
+#   macos-defaults apply defaults/finder.yaml
+#   killall Finder
+---
+description: Finder preferences
+sudo: false
+current_host: false
+data:
+  com.apple.finder:
+    # --- View ---
+    AppleShowAllExtensions: true
+    AppleShowAllFiles: true
+    ShowStatusBar: true
+    ShowPathbar: true
+    _FXShowPosixPathInTitle: true
+    _FXSortFoldersFirst: true
+    FXPreferredViewStyle: Nlsv
+    ShowLibrary: true
+
+    # --- Search ---
+    FXDefaultSearchScope: SCcf
+
+    # --- Behavior ---
+    FXEnableExtensionChangeWarning: false
+    QuitMenuItem: true
+    DisableAllAnimations: true
+
+    # --- Desktop Icons ---
+    ShowExternalHardDrivesOnDesktop: true
+    ShowMountedServersOnDesktop: true
+    ShowRemovableMediaOnDesktop: true
+
+    # --- Auto-open window for new volumes ---
+    OpenWindowForNewRemovableDisk: true
+
+    # --- Expand info panes by default ---
+    FXInfoPanesExpanded:
+      General: true
+      OpenWith: true
+      Privileges: true
+
+  # --- Prevent .DS_Store on network and USB volumes ---
+  com.apple.desktopservices:
+    DSDontWriteNetworkStores: true
+    DSDontWriteUSBStores: true
