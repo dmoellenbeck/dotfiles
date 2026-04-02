@@ -13,7 +13,7 @@
 #
 # Machine Types:
 #   - macmini           Mac Mini (server, Docker, 24/7 services)
-#   - macbook-work      Work MacBook (employer provided)
+#   - macbook-work      Work MacBook (employer provided, no Brewfile — uses base only)
 #   - macbook-personal  Personal MacBook
 #   - default           Unknown/other machines
 #

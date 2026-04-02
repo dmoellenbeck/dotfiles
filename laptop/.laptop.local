@@ -19,7 +19,6 @@ brew "fd"
 brew "fzf"
 brew "lazygit"
 brew "neovim"
-brew "python"
 brew "readline"
 brew "ripgrep"
 brew "rsync"
@@ -36,7 +35,6 @@ brew "zoxide"
 brew "zsh-abbr"
 
 cask "font-cascadia-code-nf"
-cask "ghostty"
 EOF
 
 fancy_echo "Installing latest Python ..."
@@ -48,20 +46,11 @@ add_or_update_asdf_plugin "lua" "https://github.com/Stratus3D/asdf-lua.git"
 install_asdf_language "lua"
 
 fancy_echo "Installing basic gems..."
-gem install amazing_print
-gem install bundler
-gem install foreman
-gem install irb-theme-tokyonight
-gem install neovim
 gem install overcommit
-gem install rubocop
-gem install ruby-lsp
-gem install standard
 gem install tmuxinator
 
-fancy_echo "Installing basic npm packages..."
-npm install -g http-server
-npm install -g neovim
+fancy_echo "Installing Claude Code..."
+npm install -g @anthropic-ai/claude-code
 
 fancy_echo "Laptop script finished successfully! Please restart your terminal."
 echo

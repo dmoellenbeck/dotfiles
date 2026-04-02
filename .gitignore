@@ -22,6 +22,11 @@ vim/bundle
 !tmp/
 !tmp/.stow-local-ignore
 
+# Claude Flow runtime data
+.claude-flow/
+.swarm/
+.mcp.json
+
 # Scratchpads for temporary files, notes, and debugging
 scratchpads/
 *.rej

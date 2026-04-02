@@ -12,93 +12,57 @@
 #
 
 # =============================================================================
+# Shared: Personal + Mac Mini packages
+# =============================================================================
+brew "dotnet"
+brew "gemini-cli"
+brew "go"
+brew "imap-backup"
+brew "imapsync"
+brew "kubernetes-cli"
+brew "lsd"
+brew "mackup"
+brew "midnight-commander"
+brew "nvm"
+brew "ocrmypdf"
+brew "ollama"
+brew "pnpm"
+brew "xcodegen"
+
+# =============================================================================
+# Communication
+# =============================================================================
+cask "loom"
+cask "whatsapp"
+
+# =============================================================================
 # Development Tools
 # =============================================================================
-# Visual Studio Code
-cask "visual-studio-code"
-
-# iTerm2 - Better terminal emulator
-cask "iterm2"
-
-# Docker or OrbStack
-cask "orbstack"
+cask "ngrok"
 
 # =============================================================================
-# Productivity & Utilities
+# Garmin
 # =============================================================================
-# Rectangle - Window management
-cask "rectangle"
-
-# Alfred - Spotlight replacement (or Raycast)
-# Note: Already in base Brewfile
-# cask "alfred"
-
-# 1Password - Password manager
-cask "1password"
-cask "1password-cli"
+cask "garmin-basecamp"
+cask "garmin-express"
 
 # =============================================================================
-# Communication & Social
+# Virtualization & Scanning
 # =============================================================================
-# Discord - Gaming and community chat
-cask "discord"
-
-# =============================================================================
-# Media & Entertainment
-# =============================================================================
-# Spotify - Music streaming
-cask "spotify"
-
-# VLC - Media player
-cask "vlc"
-
-# IINA - Modern media player for macOS
-cask "iina"
+cask "parallels"
+cask "parallels-toolbox"
+cask "fujitsu-scansnap-home"
 
 # =============================================================================
-# Creative Tools
+# Finance & Tax
 # =============================================================================
-# Pixelmator Pro - Image editing
-cask "pixelmator-pro"
-
-# Affinity Photo - Professional photo editing
-# cask "affinity-photo"
-
-# Affinity Designer - Vector graphics
-# cask "affinity-designer"
+cask "wiso-steuer-2025"
+cask "wiso-steuer-2026"
 
 # =============================================================================
-# Utilities
+# Mac App Store
 # =============================================================================
-# Tailscale - VPN for remote access
-cask "tailscale"
-
-# AppCleaner - Clean app uninstalls
-cask "appcleaner"
-
-# Keka - File archiver
-cask "keka"
-
-# =============================================================================
-# Personal Productivity
-# =============================================================================
-# Note: Notion and Obsidian already in base Brewfile
-
-# Bear - Note-taking (if preferred over Obsidian)
-# mas "Bear", id: 1091189122
-
-# Things 3 - Task management
-# mas "Things 3", id: 904280696
-
-# =============================================================================
-# Optional - Uncomment if needed
-# =============================================================================
-
-# Gaming
-# cask "steam"
-# cask "gog-galaxy"
-
-# Streaming
-# cask "obs"
+mas "Health Auto Export", id: 1115567069
+mas "Kindle", id: 302584613
 
 # vim: set filetype=ruby:
