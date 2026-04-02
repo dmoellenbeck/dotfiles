@@ -47,17 +47,15 @@ Track your progress through the 6 steps below. Report completion of each step be
 - Run comprehensive tests across all changes
 - Verify the original issue is resolved completely
 - Check for regressions
-- Update the issue to check off all completed acceptance criteria checkboxes:
-  fetch the current body with `gh issue view $ARGUMENTS --json body --jq '.body'`,
-  replace `- [ ]` with `- [x]` for completed items, then update with
-  `gh issue edit $ARGUMENTS --body "$updated_body"`
+- Update the issue to check off all completed acceptance criteria checkboxes: fetch the current body with `gh issue view $ARGUMENTS --json body --jq '.body'`, replace `- [ ]` with `- [x]` for completed items, then update with `gh issue edit $ARGUMENTS --body "$updated_body"`
 - **STOP**: Do not proceed until all checks pass
 
 ### Step 6: Report back
 
 - Summarize: files modified, commits made, test status, resolution confirmation
 - **STOP**: Ask user if they want to create PR now
-- Recommend: `/create-pr --issue $ARGUMENTS`
+- For non-trivial implementations, suggest running `/simplify` first to review for code reuse, quality, and efficiency improvements
+- Recommend: `/create-pr` (issue number will be inferred from branch name)
 - **Do NOT automatically create PR**
 
 ## Branch Naming
@@ -66,15 +64,14 @@ Use the issue's type label to determine the prefix. Format:
 `<prefix>/gh-<number>-<short-description>`
 
 | Type Label | Branch Prefix | Example                    |
-|------------|---------------|----------------------------|
+| ---------- | ------------- | -------------------------- |
 | `feat`     | `feat/`       | `feat/gh-41-add-auth`      |
 | `fix`      | `fix/`        | `fix/gh-55-fix-login`      |
 | `chore`    | `chore/`      | `chore/gh-51-update-deps`  |
 | `docs`     | `docs/`       | `docs/gh-60-update-readme` |
 | `test`     | `test/`       | `test/gh-63-add-coverage`  |
 
-If the issue has no type label, infer from context: bug fixes use `fix/`,
-new functionality uses `feat/`, everything else uses `chore/`.
+If the issue has no type label, infer from context: bug fixes use `fix/`, new functionality uses `feat/`, everything else uses `chore/`.
 
 ## Important
 

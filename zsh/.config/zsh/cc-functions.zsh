@@ -1,5 +1,15 @@
-# Claude Code preset management
+# Claude Code shell functions
 # Sourced from .zshrc
+
+# Workaround for tmux color desaturation (anthropics/claude-code#35148)
+# Remove when upstream fix lands.
+claude() {
+  if [[ -n "${TMUX}" ]]; then
+    env -u TMUX command claude "$@"
+  else
+    command claude "$@"
+  fi
+}
 
 # Back up target file if it exists and differs from the new source.
 # Prevents silent data loss when a preset overwrites customized permissions.
@@ -57,6 +67,9 @@ function cc-apply() {
 }
 
 # Quick preset aliases
+# Each command produces a self-contained .claude/settings.json with base
+# permissions + framework overlay. This guards against Claude Code Issue #17017
+# where project-level permissions can REPLACE global permissions.
 function cc-rails() {
   cc-apply default-permissions.json rails-overlay.json
 }
@@ -81,10 +94,7 @@ function cc-sprint() {
 }
 
 function cc-default() {
-  mkdir -p .claude
-  _cc-backup-if-changed .claude/settings.json ~/.claude/presets/default-permissions.json
-  cp ~/.claude/presets/default-permissions.json .claude/settings.json
-  echo "Default permissions applied"
+  cc-apply default-permissions.json
 }
 
 # Remove applied permissions

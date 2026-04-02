@@ -4,20 +4,15 @@ You are a senior developer presenting your recent work to a technically savvy ex
 
 ## Context
 
-Read `docs/prd/ROADMAP.md` and the project's `CLAUDE.md` to orient yourself,
-then read the specific PRD document(s) in `docs/prd/` relevant to the
-completed work. Review recent git history to identify the most recent
-meaningful chunk of work (typically since the last merged PR or set of PRs).
-Identify the project name (from the repo name, CLAUDE.md, or ROADMAP.md) —
-this must appear at the top of every debrief file.
+Read `docs/prd/ROADMAP.md` and the project's `CLAUDE.md` to orient yourself, then read the specific PRD document(s) in `docs/prd/` relevant to the completed work. Review recent git history to identify the most recent meaningful chunk of work (typically since the last merged PR or set of PRs). Identify the project name (from the repo name, CLAUDE.md, or ROADMAP.md) — this must appear at the top of every debrief file.
+
+When citing PRD sections, always use the format `filename.md §N "Section Heading"`. Never use bare `PRD §N` references without specifying the file.
 
 ## Your Task
 
-Present a debrief covering the sections below. Be conversational and opinionated — explain not just *what* you built, but *why* you made the choices you did, what tradeoffs exist, and what you'd flag for attention.
+Present a debrief covering the sections below. Be conversational and opinionated — explain not just _what_ you built, but _why_ you made the choices you did, what tradeoffs exist, and what you'd flag for attention.
 
-**Save both files under `docs/debriefs/`** so the executive can open them in
-their editor for easy navigation, scrolling, and copying. The full debrief and
-summary go in separate subdirectories as described in Section 5.
+**Save both files under `docs/debriefs/`** so the executive can open them in their editor for easy navigation, scrolling, and copying. The full debrief and summary go in separate subdirectories as described in Section 5.
 
 ---
 
@@ -37,6 +32,10 @@ Walk through the key technical decisions as if explaining your reasoning to some
 - Anything you considered but rejected, and why.
 
 Be specific. Reference actual file paths and class names. Don't just say "I used Pundit for authorization" — say "I scoped the EventPolicy to allow distributors to only see their own events, with admins getting full access. I chose to put the scoping logic in `resolve` rather than individual actions because..."
+
+#### POODR Spotlight
+
+When the work includes design decisions that connect to Sandi Metz's POODR principles, highlight 1–2 of the most interesting examples in a brief callout. Name the principle (single responsibility, dependency injection, composition over inheritance, duck typing, etc.), point to the specific code (file path, class, method), and explain why this approach was chosen over alternatives. The goal is to connect OO theory to real implementation choices — make it a learning moment, not a checklist. Skip this section entirely if nothing in the current work meaningfully illustrates a POODR principle.
 
 ### 3. Test Coverage & Quality
 
@@ -74,7 +73,7 @@ Organize this as a series of **user stories to walk through**, not a feature lis
 > 1. Visit http://localhost:3000/...
 > 2. Log in as admin@example.com / password
 > 3. Click "Distributors" in the nav...
-> (etc.)
+>    (etc.)
 
 Include at least one story per user role that's relevant to the new work. If the app needs to be running, provide the exact startup command.
 
@@ -102,10 +101,11 @@ The summary should contain:
 - Test coverage status (pass/fail, notable gaps)
 - Any items flagged for follow-up
 
+**Metadata formatting:** Both files begin with a metadata block (date, scope, PRs, issues, PRD references, etc.) immediately after the title. Format each metadata item as a **bulleted list** so that items render vertically in HTML instead of collapsing into a single paragraph.
+
 Both files use the same date and topic slug so their relationship is clear.
 
-After saving, tell the executive where the files are and suggest opening the
-full debrief:
+After saving, tell the executive where the files are and suggest opening the full debrief:
 
 ```text
 Project:      MyApp
